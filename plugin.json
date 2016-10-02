@@ -1,8 +1,8 @@
 {
     "name":"DVrestTools",
     "description":"REST Tools by Denkvertrieb GmbH",
-	  "namespace":"DVrestTools",
-	  "author":"Denkvertrieb GmbH",
+	"namespace":"DVrestTools",
+	"author":"Denkvertrieb GmbH",
     "type":"template",
-		"serviceProvider":"DVrestTools\\Providers\\DVrestToolsServiceProvider"
+	"serviceProvider":"DVrestTools\\Providers\\DVrestToolsServiceProvider"
 }
