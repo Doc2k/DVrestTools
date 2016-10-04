@@ -10,4 +10,8 @@
       {
           return $twig->render('DVrestTools::content.getToken');
       }
+      public function getStock(Twig $twig):string
+      {
+          return $twig->render('DVrestTools::content.getStock');
+      }
     }
