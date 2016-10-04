@@ -11,5 +11,6 @@
         public function map(Router $router):void
         {
           $router->get('auth','DVrestTools\Controllers\ContentController@getToken');
+          $router->get('getstock','DVrestTools\Controllers\ContentController@getStock');
         }
     }
