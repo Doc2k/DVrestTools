@@ -8,12 +8,12 @@
     {
       public function getToken(Twig $twig):string
       {
-        echo 'user'.$_GET['user'];
+        
           return $twig->render('DVrestTools::content.getToken');
       }
       public function getStock(Twig $twig):string
       {
-        echo 'user'.$_GET['user'];
+
           return $twig->render('DVrestTools::content.getStock');
       }
     }
