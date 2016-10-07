@@ -12,7 +12,7 @@
       }
       public function getStock(Twig $twig):string
       {
-        echo $_GET['user'];
+        echo 'user'.$_GET['user'];
           return $twig->render('DVrestTools::content.getStock');
       }
     }
