@@ -1,9 +1,8 @@
 <h1>Tokengenerierung (Auth)</h1>
 <h2>Hier werden username und passwort gebraucht</h2>
-{%
-  set vorspiel = 'user: ';
-  set benutzer = app.request.get('user');
- %}
+{% set vorspiel = 'user: '%}
+{% set benutzer = app.request.get('user') %}
+
 {{ vorspiel benutzer }}
 
 <script>
