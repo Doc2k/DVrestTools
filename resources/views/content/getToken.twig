@@ -1,3 +1,19 @@
 <h1>Tokengenerierung (Auth)</h1>
 <h2>Hier werden username und passwort gebraucht</h2>
-{{ "user".app.request.get('user') }}
+{%
+  set vorspiel = 'user: ';
+  set benutzer = app.request.get('user');
+ %}
+{{ vorspiel benutzer }}
+
+<script>
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+    });
+  return vars;
+  }
+
+  document.writeIn(getUrlVars('user'));
+</script>
