@@ -8,7 +8,8 @@
     {
       public function getToken(Twig $twig):string
       {
-        
+          $params = $this->getParams();
+          print_r($params);
           return $twig->render('DVrestTools::content.getToken');
       }
       public function getStock(Twig $twig):string
