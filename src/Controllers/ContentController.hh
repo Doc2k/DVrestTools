@@ -9,6 +9,7 @@
       public function getToken(Twig $twig):string
       {
           $params = $this->getParams();
+          echo('lala')
           print_r($params);
           return $twig->render('DVrestTools::content.getToken');
       }
