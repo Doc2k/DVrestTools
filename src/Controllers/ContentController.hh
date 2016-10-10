@@ -1,9 +1,9 @@
 <?hh //strict
     namespace DVrestTools\Controllers;
-    require(DVrestTools\Controllers\SuperglobalsController.hh);
     use Plenty\Plugin\Controller;
     use Plenty\Plugin\Templates\Twig;
 
+    $getParams=get_params():
     class ContentController extends Controller
     {
       public function getToken(Twig $twig):string
