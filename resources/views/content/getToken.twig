@@ -1,1 +1,47 @@
-{{hausraus}}
+
+<script src="{{ plugin_path('DVrestTools') }}/js/jquery-3.1.1.min.js"></script>
+<script>
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
+
+  var authtoken=false;
+  var autorisation=false;
+  var myCallback= getUrlVars()["callback"];
+  function getToken(){
+      if(!authtoken){
+           jQuery.ajax({
+              url:'/rest/login?username='+getUrlVars()["user"]+'&password='+getUrlVars()["password"],
+              type:"POST",
+              async: false,
+              cache: false,
+              dataType:"json",
+              headers:{"Access-Control-Allow-Origin": "*"}
+          }).done(function(response){
+              console.log(response);
+              authtoken=response.accessToken;
+              autorisation="Bearer "+authtoken;
+              console.log('Token: '+authtoken);
+              if(myCallback){
+                dieResponse=myCallback+'('+JSON.stringify(response)+')';
+              }else{
+                dieResponse=JSON.stringify(response);
+              }
+
+              document.write(dieResponse);
+              jQuery(document).html(dieResponse);
+          }).fail(function(response){
+               console.log(response);
+               return response;
+           });
+      }else{
+          alert('Token bereits geholt: '+authtoken);
+          return true;
+      }
+  }
+  getToken();
+</script>
