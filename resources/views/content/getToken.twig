@@ -1,48 +1,42 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<antwort>
-  <tokenpack>
-    <token>
 
-    <script src="{{ plugin_path('DVrestTools') }}/js/jquery-3.1.1.min.js"></script>
-    <script>
-      function getUrlVars() {
-        var vars = {};
-        var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
-          vars[key] = value;
-        });
-        return vars;
-      }
 
-      var authtoken=false;
-      var autorisation=false;
+<script src="{{ plugin_path('DVrestTools') }}/js/jquery-3.1.1.min.js"></script>
+<script>
+  function getUrlVars() {
+    var vars = {};
+    var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
+      vars[key] = value;
+    });
+    return vars;
+  }
 
-      function getToken(){
-          if(!authtoken){
-               jQuery.ajax({
-                  url:'/rest/login?username='+getUrlVars()["user"]+'&password='+getUrlVars()["password"],
-                  type:"POST",
-                  async: false,
-                  cache: false,
-                  dataType:"json",
-                  headers:{"Access-Control-Allow-Origin": "*"}
-              }).done(function(response){
-                  console.log(response);
-                  authtoken=response.accessToken;
-                  autorisation="Bearer "+authtoken;
-                  console.log('Token: '+authtoken);
-                  document.write(authtoken);
-                  return true;
-              }).fail(function(response){
-                   console.log(response);
-                   return true;
-               });
-          }else{
-              alert('Token bereits geholt: '+authtoken);
+  var authtoken=false;
+  var autorisation=false;
+
+  function getToken(){
+      if(!authtoken){
+           jQuery.ajax({
+              url:'/rest/login?username='+getUrlVars()["user"]+'&password='+getUrlVars()["password"],
+              type:"POST",
+              async: false,
+              cache: false,
+              dataType:"json",
+              headers:{"Access-Control-Allow-Origin": "*"}
+          }).done(function(response){
+              console.log(response);
+              authtoken=response.accessToken;
+              autorisation="Bearer "+authtoken;
+              console.log('Token: '+authtoken);
+              document.write(JSON.stringify(authtoken);
               return true;
-          }
+          }).fail(function(response){
+               console.log(response);
+               return true;
+           });
+      }else{
+          alert('Token bereits geholt: '+authtoken);
+          return true;
       }
-      getToken();
-    </script>
-  <token>
-  </tokenpack>
-</antwort>
+  }
+  getToken();
+</script>
