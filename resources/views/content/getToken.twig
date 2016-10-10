@@ -27,11 +27,11 @@
               autorisation="Bearer "+authtoken;
               console.log('Token: '+authtoken);
               if(myCallback){
-                dieRespons=myCallback+'('+JSON.stringify(response)+')';
+                dieResponse=myCallback+'('+JSON.stringify(response)+')';
               }else{
-                dieRespons=JSON.stringify(response);
+                dieResponse=JSON.stringify(response);
               }
-              document.write();
+              document.write(dieResponse);
               return true;
           }).fail(function(response){
                console.log(response);
