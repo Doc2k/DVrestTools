@@ -1,5 +1,5 @@
 <?hh //strict
-
+header('Content-Type: application/json');
     namespace DVrestTools\Controllers;
     use Plenty\Plugin\Controller;
     use Plenty\Plugin\Templates\Twig;
