@@ -17,7 +17,7 @@
       if(!authtoken){
            jQuery.ajax({
               url:'/rest/login?username='+getUrlVars()["user"]+'API-User&password='+getUrlVars()["password"],
-              xhrFields: {withCredentials: true},
+              
               type:"GET",
               async: false,
               cache: false,
