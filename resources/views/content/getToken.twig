@@ -16,9 +16,8 @@
   function getToken(){
       if(!authtoken){
            jQuery.ajax({
-              url:'/rest/login?username='+getUrlVars()["user"]+'API-User&password='+getUrlVars()["password"],
-              
-              type:"GET",
+              url:'/rest/login?username='+getUrlVars()["user"]+'&password='+getUrlVars()["password"],
+              type:"POST",
               async: false,
               cache: false,
               dataType:"json",
