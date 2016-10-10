@@ -1,5 +1,6 @@
 <?hh //strict
     namespace DVrestTools\Controllers;
+    require(DVrestTools\Controllers\SuperglobalsController.hh);
     use Plenty\Plugin\Controller;
     use Plenty\Plugin\Templates\Twig;
 
