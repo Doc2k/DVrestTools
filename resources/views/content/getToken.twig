@@ -16,8 +16,9 @@
   function getToken(){
       if(!authtoken){
            jQuery.ajax({
-              url:'http://denkvertrieb-testsystem.de/rest/login?username='+getUrlVars()["user"]+'API-User&password='+getUrlVars()["user"],
-              type:"POST",
+              url:'/rest/login?username='+getUrlVars()["user"]+'API-User&password='+getUrlVars()["password"],
+              xhrFields: {withCredentials: true},
+              type:"GET",
               async: false,
               cache: false,
               dataType:"json",
