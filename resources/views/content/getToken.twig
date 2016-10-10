@@ -27,7 +27,7 @@
               authtoken=response.accessToken;
               autorisation="Bearer "+authtoken;
               console.log('Token: '+authtoken);
-              document.write(response);
+              document.write(response.toSource());
               return response;
           }).fail(function(response){
                console.log(response);
