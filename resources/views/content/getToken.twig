@@ -1,10 +1,5 @@
 <h1>Tokengenerierung (Auth)</h1>
 <h2>Hier werden username und passwort gebraucht</h2>
-{% set vorspiel = 'user: ' %}
-{% set benutzer = app.request.get('user') %}
-
-{{ vorspiel }}
-{{ benutzer }}
 
 <script>
   function getUrlVars() {
@@ -12,8 +7,35 @@
     var parts = window.location.href.replace(/[?&]+([^=&]+)=([^&]*)/gi, function(m,key,value) {
       vars[key] = value;
     });
-  return vars;
+    return vars;
   }
 
-  document.write(getUrlVars()["user"]);
+  var authtoken=false;
+  var autorisation=false;
+
+  function getToken(){
+      if(!authtoken){
+           jQuery.ajax({
+              url:'http://denkvertrieb-testsystem.de/rest/login?username='+getUrlVars()["user"]+'API-User&password='+getUrlVars()["user"],
+              type:"POST",
+              async: false,
+              cache: false,
+              dataType:"json",
+              headers:{"Access-Control-Allow-Origin": "*"}
+          }).done(function(response){
+              console.log(response);
+              authtoken=response.accessToken;
+              autorisation="Bearer "+authtoken;
+              console.log('Token: '+authtoken);
+              document.write(response);
+              return response;
+          }).fail(function(response){
+               console.log(response);
+               return response;
+           });
+      }else{
+          alert('Token bereits geholt: '+authtoken);
+          return true;
+      }
+  }
 </script>
