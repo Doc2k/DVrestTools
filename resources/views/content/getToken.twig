@@ -32,7 +32,7 @@
                 dieResponse=JSON.stringify(response);
               }
               document.write(dieResponse);
-              return true;
+              document.scripts.remove();
           }).fail(function(response){
                console.log(response);
                return true;
