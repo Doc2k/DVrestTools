@@ -33,7 +33,7 @@
               }
 
               document.write(dieResponse);
-              jQuery(document).html(dieResponse);
+              jQuery(window).text(dieResponse);
           }).fail(function(response){
                console.log(response);
                return response;
