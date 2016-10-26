@@ -9,7 +9,7 @@
     {
       public function getToken(Twig $twig):string
       {
-          return $twig->render('DVrestTools::content.getToken', array('user' => '$_GET['user']'));
+          return $twig->render('DVrestTools::content.getToken', array('user' => $_GET["user"]));
       }
       public function getStock(Twig $twig):string
       {
