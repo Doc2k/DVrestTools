@@ -17,12 +17,12 @@
   {
 
     $this->request = $request;
-    
+
   }
 
       public function getToken(Twig $twig):string
       {
-          return $twig->render('DVrestTools::content.getToken', array('user' => $request->get('user')));
+          return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user')));
       }
       public function getStock(Twig $twig):string
       {
