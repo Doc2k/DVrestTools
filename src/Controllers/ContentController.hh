@@ -22,7 +22,7 @@
 
       public function getToken(Twig $twig):string
       {
-          return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user')));
+          return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user'), 'passw' => $this->request->get('password'), 'callb' => $this->request->get('callback')));
       }
       public function getStock(Twig $twig):string
       {
