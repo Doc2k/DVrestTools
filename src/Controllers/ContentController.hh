@@ -22,8 +22,8 @@
       }
 
       public function getStock(Twig $twig, ItemDataLayerRepositoryContract $layerModel):string{
-        $augabespalten =['itemDescription' => ['name1'], 'variationStock' => ['stockPhysical', 'stockNet']];
-        $itemFilter = ['itemBase.id' => $this->request->get('id')];
+        $augabespalten =['ItemDescription' => ['name1'], 'VariationStock' => ['stockPhysical', 'stockNet']];
+        $itemFilter = ['ItemBase.id' => $this->request->get('id')];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $layerModel->search($augabespalten, $itemFilter, $itemParams);
         items = array();
@@ -31,10 +31,10 @@
            {
                $items[] = $item;
            }
-           $templateData = array(
-                'currentItems' => $items,
-                'callb' => $this->request->get('callback')
-            );
+       $templateData = array(
+            'currentItems' => $items,
+            'callb' => $this->request->get('callback')
+        );
         return $twig->render('DVrestTools::content.getStock', $templateData);
       }
 
