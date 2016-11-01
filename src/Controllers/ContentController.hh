@@ -4,7 +4,7 @@
     use Plenty\Plugin\Templates\Twig;
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
-
+    use Plenty\Modules\Item\DataLayer\Models;
 
     class ContentController extends Controller{
       private Request $request;
@@ -25,7 +25,7 @@
         $augabespalten =['itemDescription' => ['name1']];
         $itemFilter = ['itemBase.id' => $this->request->get('id')];
         $itemParams = ['language' => 'de'];
-        $Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
+        $Ergebnis = $bestaende->show($this->request->get('id'), $augabespalten, $itemParams);
         return $twig->render('DVrestTools::content.getStock', array('callb' => $this->request->get('callback')));
       }
 
