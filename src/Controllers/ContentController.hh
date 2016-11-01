@@ -21,11 +21,11 @@
         return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user'), 'passw' => $this->request->get('password'), 'callb' => $this->request->get('callback')));
       }
 
-      public function getStock(Twig $twig, ItemDataLayerRepositoryContract $layerModel):string{
-        //$augabespalten =['ItemDescription' => ['name1'], 'VariationStock' => ['stockPhysical', 'stockNet']];
-        //$itemFilter = ['ItemBase.id' => $this->request->get('id')];
-        //$itemParams = ['language' => 'de'];
-        //$Ergebnis = $layerModel->search($augabespalten, $itemFilter, $itemParams);
+      public function getStock(Twig $twig, ItemDataLayerRepositoryContract $bestaende):string{
+        $augabespalten =['ItemDescription' => ['name1'], 'VariationStock' => ['stockPhysical', 'stockNet']];
+        $itemFilter = ['ItemBase.id' => $this->request->get('id')];
+        $itemParams = ['language' => 'de'];
+        //$Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
         return $twig->render('DVrestTools::content.getStock');
       }
 
