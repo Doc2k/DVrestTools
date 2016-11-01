@@ -1,7 +1,7 @@
 
 
-      {% if currentItems is not null %}
-      voll
+      {% if bestand is not null %}
+        {{ callb }}({'Name': '{{ bestand[0].item.itemDescription.name1 }}', 'phys' : '{{bestand[0].item.variationStock.stockPhysical}}', 'netto' : '{{bestand[0].item.variationStock.stockNet}}'})
       {% else %}
               Nanü
       {% endif %}
