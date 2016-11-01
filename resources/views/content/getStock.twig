@@ -2,11 +2,10 @@
 
 {% block PageBody %}
 
-        {% if bestand is not null %}
-          {{ callb }}({'Name': '{{ bestand[0].itemDescription.name1 }}', 'phys' : '{{bestand[0].variationStock.stockPhysical}}', 'netto' : '{{estand[0].variationStock.stockNet}}'})
-        {% else %}
-                Nanü
-        {% endif %}
-    </ul>
-    </div>
+      {% if bestand is not null %}
+        {{ callb }}({'Name': '{{ bestand[0].itemDescription.name1 }}', 'phys' : '{{bestand[0].variationStock.stockPhysical}}', 'netto' : '{{estand[0].variationStock.stockNet}}'})
+      {% else %}
+              Nanü
+      {% endif %}
+  im template
 {% endblock %}
