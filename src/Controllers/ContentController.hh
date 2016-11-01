@@ -26,7 +26,7 @@
         $itemFilter = ['ItemBase.id' => $this->request->get('id')];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $layerModel->search($augabespalten, $itemFilter, $itemParams);
-        items = array();
+        $items = array();
         foreach ($Ergebnis as $item)
            {
                $items[] = $item;
