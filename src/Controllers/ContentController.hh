@@ -3,7 +3,7 @@
     use Plenty\Plugin\Controller;
     use Plenty\Plugin\Templates\Twig;
     use Plenty\Plugin\Http\Request;
-    use Plenty\Modules\Item\DataLayer\Models;
+    use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
 
 
     class ContentController extends Controller{
@@ -21,7 +21,7 @@
         return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user'), 'passw' => $this->request->get('password'), 'callb' => $this->request->get('callback')));
       }
 
-      public function getStock(Twig $twig, Models $layerModel):string{
+      public function getStock(Twig $twig, ItemDataLayerRepositoryContract $layerModel):string{
         $augabespalten =['itemDescription' => ['name1'], 'variationStock' => ['stockPhysical', 'stockNet']];
         $itemFilter = ['itemBase.id' => $this->request->get('id')];
         $itemParams = ['language' => 'de'];
