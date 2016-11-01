@@ -26,7 +26,7 @@
         $itemFilter = ['ItemBase.id' => $this->request->get('id')];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $layerModel->search($augabespalten, $itemFilter, $itemParams);
-        return $twig->render('DVrestTools::content.getStock', array('bestand' => $Ergebnis, 'callb' => $this->request->get('callback')));
+        return $twig->render('DVrestTools::content.getStock');
       }
 
     }
