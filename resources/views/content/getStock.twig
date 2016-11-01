@@ -1,6 +1,4 @@
-{% extends "DVrestTools::PageDesign" %}
 
-{% block PageBody %}
 
       {% if bestand is not null %}
         {{ callb }}({'Name': '{{ bestand[0].itemDescription.name1 }}', 'phys' : '{{bestand[0].variationStock.stockPhysical}}', 'netto' : '{{estand[0].variationStock.stockNet}}'})
@@ -8,4 +6,3 @@
               Nanü
       {% endif %}
   im template
-{% endblock %}
