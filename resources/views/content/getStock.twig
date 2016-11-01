@@ -1,4 +1,9 @@
 
 
-    
+      {% if currentItems is not null %}
+        {% for item in currentItems %}
+        {{ callb }}({'Name': '{{ bestand[0].itemDescription.name1 }}', 'phys' : '{{bestand[0].variationStock.stockPhysical}}', 'netto' : '{{estand[0].variationStock.stockNet}}'})
+      {% else %}
+              Nanü
+      {% endif %}
   im template

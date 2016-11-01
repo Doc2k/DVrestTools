@@ -25,8 +25,17 @@
         $augabespalten =['itemDescription' => ['name1'], 'variationStock' => ['stockPhysical', 'stockNet']];
         $itemFilter = ['itemBase.id' => $this->request->get('id')];
         $itemParams = ['language' => 'de'];
-        //$Ergebnis = $layerModel->search($augabespalten, $itemFilter, $itemParams);
-        return $twig->render('DVrestTools::content.getStock', array('callb' => $this->request->get('callback')));
+        $Ergebnis = $layerModel->search($augabespalten, $itemFilter, $itemParams);
+        items = array();
+        foreach ($Ergebnis as $item)
+           {
+               $items[] = $item;
+           }
+           $templateData = array(
+                'currentItems' => $items,
+                'callb' => $this->request->get('callback')
+            );
+        return $twig->render('DVrestTools::content.getStock', $templateData);
       }
 
     }
