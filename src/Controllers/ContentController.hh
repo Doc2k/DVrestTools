@@ -25,7 +25,7 @@
         $augabespalten =['itemDescription' => ['name1']];
         $itemFilter = ['itemBase.id' => $this->request->get('id')];
         $itemParams = ['language' => 'de'];
-        $Ergebnis = $bestaende->show($this->request->get('id'), $augabespalten, $itemParams);
+        $Ergebnis = $bestaende->show($this->request->get('id'), array('*'), $lang = 'de');
         return $twig->render('DVrestTools::content.getStock', array('callb' => $this->request->get('callback')));
       }
 
