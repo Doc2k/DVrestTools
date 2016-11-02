@@ -1,7 +1,7 @@
 
 
       {% if callb is not null %}
-        {{ callb }}({'Name': '{{ erg }}', 'phys' : '', 'netto' : ''})
+        {{ callb }}({'Name': '{{ erg[0]->itemDescription->name1 }}', 'phys' : '', 'netto' : ''})
       {% else %}
               Nanü
       {% endif %}
