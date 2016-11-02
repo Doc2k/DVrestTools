@@ -24,7 +24,7 @@
       public function getStock(Twig $twig, ItemDataLayerRepositoryContract $bestaende):string{
         $augabespalten =['itemDescription' => ['name1']];
         $itemFilter = [
-                 'itemBase.id' => ['19002']
+                 'id' => ['19002']
              ];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
