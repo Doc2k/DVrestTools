@@ -25,7 +25,7 @@
         $augabespalten =['itemDescription' => ['name1']];
         $itemFilter = ['*'];
         $itemParams = ['language' => 'de'];
-        $Ergebnis = $bestaende->search($augabespalten, '*', $itemParams);
+        $Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
         return $twig->render('DVrestTools::content.getStock', array('callb' => $this->request->get('callback'), 'erg' => $Ergebnis));
       }
 
