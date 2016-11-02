@@ -23,7 +23,7 @@
 
       public function getStock(Twig $twig, ItemDataLayerRepositoryContract $bestaende):string{
         $augabespalten =['itemDescription' => ['name1']];
-        $itemFilter = ['itemBase.Id' => 19001];
+        $itemFilter = ['itemBase.Id'];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
         return $twig->render('DVrestTools::content.getStock', array('callb' => $this->request->get('callback'), 'erg' => $Ergebnis));
