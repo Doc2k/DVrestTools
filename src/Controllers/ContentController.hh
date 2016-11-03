@@ -24,7 +24,7 @@
         $augabespalten =[
           'itemDescription' => ['name1'],
           'variationBase' => ['id'],
-          'variationStock' => ['warehouseId']
+          'variationstock' => ['warehouseId']
         ];
         $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
         $itemParams = ['language' => 'de'];
