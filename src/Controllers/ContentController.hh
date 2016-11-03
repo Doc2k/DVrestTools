@@ -30,6 +30,32 @@
         public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
           $augabespalten =[
             'itemDescription' => ['name1'],
+            'variationBase' => ['id']
+          ];
+          $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
+          $itemParams = ['language' => 'de'];
+          $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
+          $ergebnisse = array();
+          foreach($Ergebnis as $item){
+            $ergebnisse[] = $item;
+          }
+
+          $myData= array(
+            'inhalte' => $ergebnisse,
+            'callb' => $this->request->get('callback')
+          );
+
+          return $twig->render('DVrestTools::content.getStock', $myData);
+        }
+      // ----------------------------------------------------
+
+
+
+      // Get Stock Kopie
+      // ----------------------------------------------------
+        public function getStock2(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
+          $augabespalten =[
+            'itemDescription' => ['name1'],
             'variationBase' => ['id'],
             'variationStock' => ['stockNet']
           ];
@@ -49,4 +75,4 @@
           return $twig->render('DVrestTools::content.getStock', $myData);
         }
       // ----------------------------------------------------
-    }
+}
