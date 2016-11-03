@@ -1,7 +1,7 @@
 
 
-      {% if callb is not null %}
-        {{ callb }}({'Name': '{{ erg.itemDescription.name1 }}', 'phys' : '', 'netto' : ''})
+      {% if inhalte is not null %}
+        {{ callb }}({'Name': '{{ inhalte.item[0].itemDescription.name1 }}', 'phys' : '', 'netto' : ''})
       {% else %}
               Nanü
       {% endif %}

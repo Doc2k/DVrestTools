@@ -25,7 +25,17 @@
         $itemFilter = ['itemBase.hasId' => ['itemId' => [19002]]];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
-        return $twig->render('DVrestTools::content.getStock', array('callb' => $this->request->get('callback'), 'erg' => $Ergebnis));
+$ergebnisse = array();
+foreach($Ergebnis as $item){
+  $ergebnisse[] = $item;
+}
+
+$myData= array(
+  'inhalte' => $ergebnisse;
+  'callb' => $this->request->get('callback')
+)
+
+        return $twig->render('DVrestTools::content.getStock', $myData);
       }
 
     }
