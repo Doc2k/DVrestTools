@@ -43,7 +43,7 @@
             $ergebnisse[] = $item;
 
             $augabespaltenStock =['stockNet'];
-            $nettobestand = $stockrepo->search($augabespaltenStock, $itemFilter, $itemParams)
+            $nettobestand = $stockrepo->search($augabespaltenStock, $itemFilter, $itemParams);
             foreach($nettobestand as $stock){
               $ergebnisse2[] = $stock;
             }
