@@ -36,17 +36,23 @@
           $itemParams = ['language' => 'de'];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
+          $ergebnisse2 = array();
 
 
           foreach($Ergebnis as $item){
+            $ergebnisse[] = $item;
+
             $augabespaltenStock =['stockNet'];
             $nettobestand = $stockrepo->search($augabespaltenStock, $itemFilter, $itemParams)
+            foreach($nettobestand as $stock){
+              $ergebnisse2[] = $stock;
+            }
 
-            $ergebnisse[] = $item->$nettobestand;
           }
 
           $myData= array(
             'inhalte' => $ergebnisse,
+            'inhalte2' => $ergebnisse2,
             'callb' => $this->request->get('callback')
           );
 
