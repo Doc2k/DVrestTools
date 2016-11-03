@@ -4,32 +4,36 @@
     use Plenty\Plugin\Templates\Twig;
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
-    use Plenty\Modules\Item\DataLayer\Models\VariationStock;
 
     class ContentController extends Controller{
-      private Request $request;
-      /**
-      * @param Request $request
-      */
+      // Superglobale GET einbinden
+      // ----------------------------------------------------
+        private Request $request;
+        /**
+        * @param Request $request
+        */
 
-      public function __construct(Request $request){
-        $this->request = $request;
+        public function __construct(Request $request){
+          $this->request = $request;
+        }
+      // ----------------------------------------------------
 
-      }
+      // GetToken (vorerst unbenutzt)
+      // ----------------------------------------------------
+        public function getToken(Twig $twig):string{
+          return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user'), 'passw' => $this->request->get('password'), 'callb' => $this->request->get('callback')));
+        }
+      // ----------------------------------------------------
 
-      public function getToken(Twig $twig):string{
-        return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user'), 'passw' => $this->request->get('password'), 'callb' => $this->request->get('callback')));
-      }
 
-      public function getStock(Twig $twig, ItemDataLayerRepositoryContract $bestaende):string{
+      public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
         $augabespalten =[
           'itemDescription' => ['name1'],
-          'variationStock' => ['stockPhysical'],
           'variationBase' => ['id']
         ];
-        $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
+        $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]], 'VariationBase.hasId' => ['id' => [1017]]];
         $itemParams = ['language' => 'de'];
-        $Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
+        $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
 $ergebnisse = array();
 foreach($Ergebnis as $item){
   $ergebnisse[] = $item;
