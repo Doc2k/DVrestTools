@@ -31,9 +31,9 @@ foreach($Ergebnis as $item){
 }
 
 $myData= array(
-  'inhalte' => $ergebnisse;
+  'inhalte' => $ergebnisse,
   'callb' => $this->request->get('callback')
-)
+);
 
         return $twig->render('DVrestTools::content.getStock', $myData);
       }

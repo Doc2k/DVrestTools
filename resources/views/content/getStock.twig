@@ -1,7 +1,9 @@
-{% if inhalte is not null %}
+
+
+  {% if inhalte is not null %}
   {% for item in inhalte %}
-    {{ callb }}({'Name': '{{ item.itemDescription.name1 }}', 'phys' : '', 'netto' : ''})
+    {{ callb }}({'Name': '{{ inhalte.item[0].itemDescription.name1 }}', 'phys' : '', 'netto' : ''})
   {% endfor %}
-{% else %}
-        Nanü
-{% endif %}
+  {% else %}
+          Nanü
+  {% endif %}
