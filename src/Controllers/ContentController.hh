@@ -4,7 +4,7 @@
     use Plenty\Plugin\Templates\Twig;
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
-    use Plenty\Modules\Item\DataLayer\Models\VariationStock
+    use Plenty\Modules\Item\DataLayer\Models\VariationStock;
 
     class ContentController extends Controller{
       private Request $request;
