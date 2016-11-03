@@ -24,9 +24,9 @@
         $augabespalten =[
           'itemDescription' => ['name1'],
           'variationBase' => ['id'],
-          'variationStock' => ['stockPhysical']
+          'variationStock' => ['stockPhysical', 'stockNet']
         ];
-        $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
+        $itemFilter = ['itemBase.hasId' => ['itemId' => [19002]]];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $bestaende->search($augabespalten, $itemFilter, $itemParams);
 $ergebnisse = array();
