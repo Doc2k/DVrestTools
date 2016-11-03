@@ -30,7 +30,8 @@
         public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
           $augabespalten =[
             'itemDescription' => ['name1'],
-            'variationBase' => ['id']
+            'variationBase' => ['id'],
+            'variationStock' => ['stockNet'],
           ];
           $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
           $itemParams = ['language' => 'de'];
