@@ -31,7 +31,7 @@
           'itemDescription' => ['name1'],
           'variationBase' => ['id']
         ];
-        $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]], 'VariationBase.hasId' => ['id' => [1017]]];
+        $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
         $itemParams = ['language' => 'de'];
         $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
 $ergebnisse = array();
