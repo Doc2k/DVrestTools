@@ -18,7 +18,7 @@
         }
       // ----------------------------------------------------
 
-      // GetToken (vorerst unbenutzt)
+      // Get Token vorerst unbenutzt
       // ----------------------------------------------------
         public function getToken(Twig $twig):string{
           return $twig->render('DVrestTools::content.getToken', array('user' => $this->request->get('user'), 'passw' => $this->request->get('password'), 'callb' => $this->request->get('callback')));
