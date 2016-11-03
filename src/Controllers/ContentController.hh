@@ -4,7 +4,7 @@
     use Plenty\Plugin\Templates\Twig;
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
-    use Plenty\Modules\Item\DataLayer\Models\VariationStock;
+
     class ContentController extends Controller{
       // Superglobale GET einbinden
       // ----------------------------------------------------
@@ -27,7 +27,7 @@
 
       // Get Stock also irgendwann mal
       // ----------------------------------------------------
-        public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationStock $stockrepo):string{
+        public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
           $augabespalten =[
             'itemDescription' => ['name1'],
             'variationBase' => ['id'],
@@ -36,23 +36,12 @@
           $itemParams = ['language' => 'de'];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          $ergebnisse2 = array();
-
-
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
-
-            $augabespaltenStock =['stockNet'];
-            $nettobestand = $stockrepo->search($augabespaltenStock, $itemFilter, $itemParams);
-            foreach($nettobestand as $stock){
-              $ergebnisse2[] = $stock;
-            }
-
           }
 
           $myData= array(
             'inhalte' => $ergebnisse,
-            'inhalte2' => $ergebnisse2,
             'callb' => $this->request->get('callback')
           );
 
