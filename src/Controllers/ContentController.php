@@ -8,7 +8,7 @@
     class ContentController extends Controller{
       // Superglobale GET einbinden
       // ----------------------------------------------------
-        private Request $request;
+        private Request public $request;
         /**
         * @param Request $request
         */
