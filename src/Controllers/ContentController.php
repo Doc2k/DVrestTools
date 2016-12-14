@@ -1,4 +1,4 @@
-<?hh //strict
+<?php
     namespace DVrestTools\Controllers;
     use Plenty\Plugin\Controller;
     use Plenty\Plugin\Templates\Twig;

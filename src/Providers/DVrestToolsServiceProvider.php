@@ -1,4 +1,4 @@
-<?hh //strict
+<?php
 
     namespace DVrestTools\Providers;
 
@@ -9,7 +9,7 @@
     {
       /* Register the service provider. */
       /* ---------------------------------------------- */
-          public function register():void{
+          public function register(){
             $this->getApplication()->register(DVrestToolsRouteServiceProvider::class);
           }
       /* ---------------------------------------------- */

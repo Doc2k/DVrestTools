@@ -1,4 +1,4 @@
-<?hh //strict
+<?php
 
     namespace DVrestTools\Providers;
 
@@ -8,7 +8,7 @@
 
     class DVrestToolsRouteServiceProvider extends RouteServiceProvider
     {
-        public function map(Router $router):void
+        public function map(Router $router)
         {
           $router->get('auth','DVrestTools\Controllers\ContentController@getToken');
           $router->get('getstock','DVrestTools\Controllers\ContentController@getStock');
