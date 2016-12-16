@@ -1,6 +1,6 @@
 {% if inhalte is not null %}
   {% for item in inhalte %}
-    {{ callb }}({'Name': '{{ item.itemDescription.name1 }}', 'variationId' : '{{ item.variationBase.id }}', 'nettoStock' : 'variationStock knallt ja!'})
+    {{ callb }}({'Name': '{{ item.itemDescription.name1 }}', 'variationId' : '{{ item.variationBase.id }}', 'nettoStock' : '{{ item.variationStock.stockNet }}'})
   {% endfor %}
 {% else %}
         Nanü
