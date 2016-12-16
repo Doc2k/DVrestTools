@@ -60,7 +60,7 @@
             'variationStock' => ['stockNet']
           ];
           $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
-          $itemParams = ['language' => 'de'];
+          $itemParams = ['language' => 'de', 'type' => 'virtual'];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           foreach($Ergebnis as $item){
