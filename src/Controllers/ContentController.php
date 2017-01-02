@@ -31,6 +31,8 @@
       // ----------------------------------------------------
         public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
           header('content-type: application/json; charset=utf-8');
+          header("access-control-allow-origin: *");
+          
           $augabespalten =[
             'itemDescription' => ['name1'],
             'variationBase' => ['id'],
