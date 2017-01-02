@@ -1,4 +1,4 @@
-<?php
+<?php header('content-type: application/json; charset=utf-8');
     namespace DVrestTools\Controllers;
     use Plenty\Plugin\Controller;
     use Plenty\Plugin\Templates\Twig;
