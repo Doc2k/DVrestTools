@@ -36,8 +36,8 @@
           $augabespalten =[
             'itemDescription' => ['name1'],
             'variationBase' => ['id'],
-            'variationStock' => ['stockPhysical'],
             'variationStock' => ['stockNet'],
+            'variationStock' => ['stockPhysical'],
             'variationStock' => ['warehouseId']
           ];
           $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
