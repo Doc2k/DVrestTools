@@ -46,8 +46,7 @@
           $stockColumns= array('stockNet');
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
-            $variID = $item->variationBase->id;
-            echo $variID.'<- Kommt doch raus!';
+
 
             //$Stockergebnis= $repo2->listStockByWarehouse($variID, $stockColumns);
             //foreach($Stockergebnis as $bestand){
