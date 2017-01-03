@@ -84,7 +84,7 @@
             $ergebnisse[] = $item;
           }
           echo $Stockergebnis.'blaaaa';
-          echo strval($Stockergebnis);
+          
           $myData= array(
             'inhalte' => $ergebnisse,
             'callb' => $this->request->get('callback')
