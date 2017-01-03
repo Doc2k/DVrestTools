@@ -49,7 +49,7 @@
             foreach($Stockergebnis as $bestand){
               //$item['Stock_netto']=$bestand->stockNet;
               //$item['Stock_Phys']=$bestand->stockPhysical;
-              $ergebnisse[] = $item;
+              $ergebnisse[] = $bestand;
             }
           }
 
