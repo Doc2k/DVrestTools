@@ -76,7 +76,7 @@
           $ergebnisse = array();
           // $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId'];
           // $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
-          $stockColumns= 'stockNet';
+          $stockColumns= array('stockNet');
 
           $Stockergebnis= $repo->listStockByWarehouse(1017, $stockColumns);
           foreach($Stockergebnis as $bestand){
