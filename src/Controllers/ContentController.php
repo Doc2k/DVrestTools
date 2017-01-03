@@ -75,7 +75,7 @@
           header("access-control-allow-origin: *");
 
           $ergebnisse = array();
-          $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
+          $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId']];
 
 
           $Stockergebnis= $repo->listStockByWarehouse(1017, $stockColumns);
