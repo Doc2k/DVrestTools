@@ -45,7 +45,7 @@
           $ergebnisse = array();
           $stockColumns= ['itemId', 'stockNet', 'stockPhysical', 'warehouseId'];
           foreach($Ergebnis as $item){
-            $Stockergebnis= $repo->listStockByWarehouse($item.variationBase.id, array $stockColumns);
+            $Stockergebnis= $repo->listStockByWarehouse($item.variationBase.id, $stockColumns);
             foreach($Stockergebnis as $bestand){
               array_push($item, "Stock_netto"=>$bestand.stockNet, "Stock_Phys"=>$bestand.stockPhysical);
               $ergebnisse[] = $item;
