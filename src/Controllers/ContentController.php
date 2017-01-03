@@ -67,3 +67,29 @@
         }
       // ----------------------------------------------------
 }
+
+
+// Get Stock 2
+// ----------------------------------------------------
+  public function getStock2(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationStockRepositoryContract $repo2):string{
+    header('content-type: application/json; charset=utf-8');
+    header("access-control-allow-origin: *");
+    
+    $ergebnisse = array();
+    $stockColumns= array('stockNet');
+    foreach($Ergebnis as $item){
+
+      $Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
+      foreach($Stockergebnis as $bestand){
+        $ergebnisse[] = $bestand;
+    }
+
+    $myData= array(
+      'inhalte' => $ergebnisse,
+      'callb' => $this->request->get('callback')
+    );
+
+    return $twig->render('DVrestTools::content.getStock', $myData);
+  }
+// ----------------------------------------------------
+}
