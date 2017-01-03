@@ -82,9 +82,10 @@
           $Stockergebnis= $repo->listStockMovements(1017, $stockColumns, 1, 10);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
+              echo $item->stockNet.'blaaaa';
           }
-          echo $Stockergebnis.'blaaaa';
-          
+
+
           $myData= array(
             'inhalte' => $ergebnisse,
             'callb' => $this->request->get('callback')
