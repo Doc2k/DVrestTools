@@ -3,8 +3,9 @@
     use Plenty\Plugin\Controller;
     use Plenty\Plugin\Templates\Twig;
     use Plenty\Plugin\Http\Request;
-    use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
     use Plenty\Modules\Item\VariationStock\Contracts\VariationStockRepositoryContract;
+    use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
+
 
     class ContentController extends Controller{
       // Superglobale GET einbinden
