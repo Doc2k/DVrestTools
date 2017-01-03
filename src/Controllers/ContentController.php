@@ -47,15 +47,16 @@
           foreach($Ergebnis as $item){
             $variID = $item->variationBase->id;
             echo $variID;
-            $Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
-            //foreach($Stockergebnis as $bestand){
-              //$item+=['Stock_netto' => $bestand->stockNet];
-              //$item+=['Stock_Phys' => $bestand->stockPhysical];
 
-            //}
             $ergebnisse[] = $item;
           }
+          $Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
+            foreach($Stockergebnis as $bestand){
+              echo $bestand->variationStock->stockNet;
+            //$item+=['Stock_netto' => $bestand->stockNet];
+            //$item+=['Stock_Phys' => $bestand->stockPhysical];
 
+          }
           $myData= array(
             'inhalte' => $ergebnisse,
             'callb' => $this->request->get('callback')
