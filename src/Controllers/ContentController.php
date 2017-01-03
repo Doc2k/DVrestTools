@@ -27,18 +27,19 @@
 
 
 
-      // Get Stock Kopie
+      // Get Stock
       // ----------------------------------------------------
         public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
-          
+
           $augabespalten =[
             'itemDescription' => ['name1'],
             'variationBase' => ['id'],
+            'variationStock' => ['stockPhysical'],
             'variationStock' => ['stockNet']
           ];
-          $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
+          $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]],'variationStock.hasId' => ['warehouseId' => 1]];
           $itemParams = ['language' => 'de', 'type' => 'virtual'];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
