@@ -45,6 +45,7 @@
           $ergebnisse = array();
           $stockColumns= ['VariationStock' =>['stockNet', 'stockPhysical', 'warehouseId']];
           foreach($Ergebnis as $item){
+            $ergebnisse[] = $item;
             $variID = $item->variationBase->id;
             echo $variID.'<- Kommt doch raus!';
             $Stockergebnis= $repo2->listStockByWarehouse($variID, $stockColumns);
@@ -53,7 +54,7 @@
               //$item+=['Stock_Phys' => $bestand->stockPhysical];
 
             //}
-            $ergebnisse[] = $item;
+
           }
 
           $myData= array(
