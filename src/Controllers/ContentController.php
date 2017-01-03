@@ -49,7 +49,7 @@
             $variID = $item->variationBase->id;
             echo $variID.'<- Kommt doch raus!';
 
-            $Stockergebnis= $repo2->listStockByWarehouse($variID, $stockColumns);
+            //$Stockergebnis= $repo2->listStockByWarehouse($variID, $stockColumns);
             //foreach($Stockergebnis as $bestand){
               //$item+=['Stock_netto' => $bestand->stockNet];
               //$item+=['Stock_Phys' => $bestand->stockPhysical];
