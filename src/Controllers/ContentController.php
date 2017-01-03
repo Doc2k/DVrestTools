@@ -80,8 +80,8 @@
           $stockColumns= array('stockNet');
 
           $Stockergebnis= $repo->listStockMovements(1017, $stockColumns, 1, 10);
-          foreach($Stockergebnis as $bestand){
-            $ergebnisse[] = $bestand;
+          foreach($Stockergebnis as $item){
+            $ergebnisse[] = $item;
           }
 
           $myData= array(
