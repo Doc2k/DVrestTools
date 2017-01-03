@@ -43,7 +43,7 @@
           $itemParams = ['language' => 'de', 'type' => 'virtual'];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          $stockColumns= ['itemId', 'stockNet', 'stockPhysical', 'warehouseId']
+          $stockColumns= ['itemId', 'stockNet', 'stockPhysical', 'warehouseId'];
           foreach($Ergebnis as $item){
             $Stockergebnis= $repo->listStockByWarehouse($item.variationBase.id, array $stockColumns);
             foreach($Stockergebnis as $bestand)
