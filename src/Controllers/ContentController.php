@@ -91,8 +91,4 @@
           return $twig->render('DVrestTools::content.getStock', $myData);
         }
       // ----------------------------------------------------
-      }
-
-
-
-}
+    }
