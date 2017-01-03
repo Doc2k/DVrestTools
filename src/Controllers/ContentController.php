@@ -44,6 +44,7 @@
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           $stockColumns= ['itemId', 'stockNet', 'stockPhysical', 'warehouseId'];
+          echo $Ergebnis->variationBase->id;
           foreach($Ergebnis as $item){
             echo $item->variationBase->id;
             $Stockergebnis= $repo2->listStockByWarehouse($item->variationBase->id, $stockColumns);
