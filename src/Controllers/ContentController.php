@@ -4,6 +4,7 @@
     use Plenty\Plugin\Templates\Twig;
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
+    use Plenty\Modules\Item\VariationStock\Contracts\VariationStockRepositoryContract;
 
     class ContentController extends Controller{
       // Superglobale GET einbinden
@@ -42,7 +43,11 @@
           $itemParams = ['language' => 'de', 'type' => 'virtual'];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
+          $stockColumns= ['itemId', 'stockNet', 'stockPhysical', 'warehouseId']
           foreach($Ergebnis as $item){
+            $Stockergebnis= $repo->listStockByWarehouse($item.variationBase.id, array $stockColumns);
+            foreach($Stockergebnis as $bestand)
+            array_push($item, "Stock_netto"=>$bestand.stockNet, "Stock_Phys"=>$bestand.stockPhysical);
             $ergebnisse[] = $item;
           }
 
