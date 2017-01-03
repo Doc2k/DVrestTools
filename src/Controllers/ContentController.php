@@ -83,7 +83,7 @@
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
           }
-
+          var_dump($Stockergebnis);
           $myData= array(
             'inhalte' => $ergebnisse,
             'callb' => $this->request->get('callback')
