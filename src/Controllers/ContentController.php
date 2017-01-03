@@ -39,7 +39,7 @@
             'variationStock' => ['stockPhysical'],
             'variationStock' => ['stockNet']
           ];
-          $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]],'variationStock.warehouseId' => 1];
+          $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]],'variationStock.haswarehouseId' => ['warehouseId' => 1]];
           $itemParams = ['language' => 'de', 'type' => 'virtual'];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
