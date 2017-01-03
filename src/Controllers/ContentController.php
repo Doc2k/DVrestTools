@@ -76,11 +76,11 @@
 
           $ergebnisse = array();
           $stockColumns= array('stockNet');
-          foreach($Ergebnis as $item){
 
-            $Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
-            foreach($Stockergebnis as $bestand){
-              $ergebnisse[] = $bestand;
+
+          $Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
+          foreach($Stockergebnis as $bestand){
+            $ergebnisse[] = $bestand;
           }
 
           $myData= array(
