@@ -2,6 +2,7 @@
   {% for item in inhalte %}
     {{ callb }}({'Name': '{{ item.itemDescription.name1 }}', 'variationId' : '{{ item.variationBase.id }}', 'nettoStock' : '{{ item.variationStock.stockNet }}', 'physStock' : '{{ item.variationStock.stockPhysical }}', 'Warehouse' : '{{ item.variationStock.warehouseId }}'})
   {% endfor %}
+  inhalte gefüllt
 {% else %}
         Nanü
 {% endif %}
