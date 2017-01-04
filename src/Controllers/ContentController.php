@@ -91,7 +91,7 @@
             'callb' => $this->request->get('callback')
           );
 
-          return $twig->render('DVrestTools::content.getStock', $myData);
+          return $twig->render('DVrestTools::content.getStock2', $myData);
         }
       // ----------------------------------------------------
     }
