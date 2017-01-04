@@ -84,7 +84,7 @@
             $ergebnisse[] = $item;
             $alsstring= (string)$item;
             echo $alsstring;
-            echo $item->stockNet;
+            echo '**'.$item->stockNet-'**';
           }
 
           $myData= array(
