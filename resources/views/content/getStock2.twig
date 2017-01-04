@@ -1,13 +1,11 @@
 {% if inhalte is not null %}
   {% for item in inhalte %}
-  item gefunden
+  ** item gefunden ** <br />
     {{ callb }}({'Name': '{{ item.itemDescription.name1 }}', 'variationId' : '{{ item.variationBase.id }}', 'nettoStock' : '{{ item.variationStock.stockNet }}', 'physStock' : '{{ item.variationStock.stockPhysical }}', 'Warehouse' : '{{ item.variationStock.warehouseId }}'})
   {% endfor %}
-  {{ inhalte[0] }}
-  {{ callb }}
-  inhalte gefüllt
+  ** inhalte gefüllt ** <br />
 {% else %}
         Nanü
 {% endif %}
 
-tescht
+** tescht **
