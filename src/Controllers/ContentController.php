@@ -87,7 +87,7 @@
           }
 
           $myData= array(
-            'inhalte' => $Stockergebnis,
+            'inhalte' => $ergebnisse,
             'callb' => $this->request->get('callback')
           );
 
