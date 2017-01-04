@@ -82,8 +82,8 @@
           $Stockergebnis= $repo->listStockMovements(1017, $stockColumns, 1, 10);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
+            echo $item;
           }
-          echo $Stockergebnis.'blaaaa';
 
           $myData= array(
             'inhalte' => $ergebnisse,
