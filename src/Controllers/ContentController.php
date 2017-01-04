@@ -83,7 +83,7 @@
 echo strval($Stockergebnis);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
-            echo $item;
+            echo strval($item);
           }
 
           $myData= array(
