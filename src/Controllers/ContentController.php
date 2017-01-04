@@ -75,9 +75,9 @@
           header("access-control-allow-origin: *");
 
           $ergebnisse = array();
-          // $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId'];
-          $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
-          //$stockColumns= array('stockNet');
+          $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId'];
+          // $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
+          // $stockColumns= array('stockNet');
 
           $Stockergebnis= $repo->listStockMovements(1017, $stockColumns, 1, 10);
           foreach($Stockergebnis as $item){
