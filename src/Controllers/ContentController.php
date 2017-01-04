@@ -49,7 +49,7 @@
             $ergebnisse[] = $item;
 
 
-            $Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
+            //$Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
             //foreach($Stockergebnis as $bestand){
               //$item+=['Stock_netto' => $bestand->stockNet];
               //$item+=['Stock_Phys' => $bestand->stockPhysical];
@@ -76,15 +76,14 @@
 
           $ergebnisse = array();
           // $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId'];
-          // $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
-          $stockColumns= array('stockNet');
+          $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
+          //$stockColumns= array('stockNet');
 
           $Stockergebnis= $repo->listStockMovements(1017, $stockColumns, 1, 10);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
-              echo $item->stockNet.'blaaaa';
           }
-
+          echo $Stockergebnis.'blaaaa';
 
           $myData= array(
             'inhalte' => $ergebnisse,
