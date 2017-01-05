@@ -39,7 +39,7 @@
           $augabespalten =[
             'itemDescription' => ['name1'],
             'variationBase' => ['id'],
-            'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
+            'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId', 'storageLocationId']
           ];
           $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
@@ -72,7 +72,7 @@
           header("access-control-allow-origin: *");
 
           $ergebnisse = array();
-          $correctColumns=['warehouseId'=>103,'stockPhysical'=>25];
+          $correctColumns=['warehouseId'=>103,'stockPhysical'=>25, 'quantity'=>25, 'storageLocationId'=>0];
           $Stockergebnis= $repo->correctStock(1017, $correctColumns);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
