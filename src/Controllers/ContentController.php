@@ -5,7 +5,6 @@
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\VariationStock\Contracts\VariationStockRepositoryContract;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
-    use Plenty\Modules\Item\VariationStock\Models\VariationStock;
 
 
     class ContentController extends Controller{
@@ -66,6 +65,7 @@
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
           $correctColumns=['warehouseId'=>103, 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
+          echo($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
           return $repo1->correctStock(1017, $correctColumns);
       // ----------------------------------------------------
     }
