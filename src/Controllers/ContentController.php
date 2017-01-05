@@ -61,7 +61,7 @@
 
       // Set Stock
       // ----------------------------------------------------
-        public function getStock2(VariationStockRepositoryContract $repo1):string{
+        public function getStock2(VariationStockRepositoryContract $repo1):array{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
           $correctColumns=['warehouseId'=>103, 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
