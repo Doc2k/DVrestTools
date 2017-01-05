@@ -72,11 +72,8 @@
           header("access-control-allow-origin: *");
 
           $ergebnisse = array();
-          // $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId'];
-          $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
-          // $stockColumns= array('stockNet');
-
-          $Stockergebnis= $repo->listStockByWarehouse(1017, $stockColumns);
+          $correctColumns=['warehouseId'=>103,'stockPhysical'=>25];
+          $Stockergebnis= $repo->correctStock(1017, $correctColumns);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
             $alsstring= (string)$item;
