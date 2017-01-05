@@ -67,7 +67,7 @@
 
       // Get Stock 2
       // ----------------------------------------------------
-        public function getStock2(Twig $twig, StockRepositoryContract $repo):string{
+        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):string{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
 
@@ -76,7 +76,7 @@
           // $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
           // $stockColumns= array('stockNet');
 
-        $Stockergebnis= $repo->listStockByWarehouse(1017, $stockColumns);
+        $Stockergebnis= $repo->listStockByWarehouseId(1017, $stockColumns);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
             $alsstring= (string)$item;
