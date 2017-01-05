@@ -46,6 +46,9 @@
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           $stockColumns= array('stockNet');
+          foreach($Ergebnis as $item){
+            $ergebnisse[] = $item;
+          }
 
           $myData= array(
             'inhalte' => $ergebnisse,
@@ -59,16 +62,18 @@
 
       // Get Stock 2
       // ----------------------------------------------------
-        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):string{
+        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo){
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
 
+
           $correctColumns=['warehouseId'=>103, 'quantity'=>24, 'storageLocationId'=>0];
           $Stockergebnis= $repo->correctStock(1017, $correctColumns);
-
           echo $this->request->get('callback')."({'success': 'true', 'newStock' : '24'})";
 
 
+
+          return true;
         }
       // ----------------------------------------------------
     }
