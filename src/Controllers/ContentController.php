@@ -72,7 +72,7 @@
           header("access-control-allow-origin: *");
 
           $ergebnisse = array();
-          $correctColumns=['warehouseId'=>103, 'quantity'=>25, 'storageLocationId'=>0];
+          $correctColumns=['warehouseId'=>103, 'quantity'=>24, 'storageLocationId'=>0];
           $Stockergebnis= $repo->correctStock(1017, $correctColumns);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
@@ -86,7 +86,7 @@
             'callb' => $this->request->get('callback')
           );
 
-          return $twig->render('DVrestTools::content.getStock2', $myData);
+          // return $twig->render('DVrestTools::content.getStock2', $myData);
         }
       // ----------------------------------------------------
     }
