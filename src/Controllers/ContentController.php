@@ -72,14 +72,9 @@
           header("access-control-allow-origin: *");
 
           $ergebnisse = array();
-          $correctColumns=['warehouseId'=>103, 'quantity'=>24, 'storageLocationId'=>0];
+          $correctColumns=['warehouseId'=>103, 'quantity'=>40, 'storageLocationId'=>0];
           $Stockergebnis= $repo->correctStock(1017, $correctColumns);
-          foreach($Stockergebnis as $item){
-            $ergebnisse[] = $item;
-            $alsstring= (string)$item;
-            echo $alsstring;
-            echo '**'.$item->stockNet-'**';
-          }
+
 
           $myData= array(
             'inhalte' => $ergebnisse,
