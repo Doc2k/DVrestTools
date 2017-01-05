@@ -32,7 +32,7 @@
 
       // Get Stock
       // ----------------------------------------------------
-        public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationStockRepositoryContract $repo2):string{
+        public function getStock(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
 
@@ -62,7 +62,7 @@
 
       // Set Stock
       // ----------------------------------------------------
-        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo){
+        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):string{
           //header('content-type: application/json; charset=utf-8');
           //header("access-control-allow-origin: *");
 
