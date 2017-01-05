@@ -62,9 +62,7 @@
       // Set Stock
       // ----------------------------------------------------
         public function getStock2(VariationStockRepositoryContract $repo1){
-          header('content-type: application/json; charset=utf-8');
-          header("access-control-allow-origin: *");
-          $correctColumns=['warehouseId'=>103, 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
+          $correctColumns=['warehouseId'=>$this->request->get('warehouse'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
           // echo($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
           $repo1->correctStock(1017, $correctColumns);
       // ----------------------------------------------------
