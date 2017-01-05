@@ -62,12 +62,15 @@
 
       // Set Stock
       // ----------------------------------------------------
-        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):void{
+        public function getStock2(VariationStockRepositoryContract $repo1):void{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
-          print($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
           $correctColumns=['warehouseId'=>103, 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
-          $Stockergebnis= $repo->correctStock(1017, $correctColumns);
+          if($repo1->correctStock(1017, $correctColumns)){
+            print($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
+          }else{
+            print($this->request->get('callback')."({'success': 'false', 'newStock' : ".$this->request->get('quant')."})");
+          }
       // ----------------------------------------------------
     }
 }
