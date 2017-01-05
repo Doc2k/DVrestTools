@@ -65,7 +65,7 @@
           $correctColumns=['warehouseId'=>$this->request->get('warehouse'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
 
           $repo1->correctStock(1017, $correctColumns);
-          return ($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
+          echo ($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
       // ----------------------------------------------------
     }
 }
