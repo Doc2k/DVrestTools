@@ -62,7 +62,7 @@
 
       // Get Stock 2
       // ----------------------------------------------------
-        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):array{
+        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):bool{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
 
