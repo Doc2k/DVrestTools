@@ -62,7 +62,7 @@
 
       // Set Stock
       // ----------------------------------------------------
-        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):array{
+        public function getStock2(Twig $twig, VariationStockRepositoryContract $repo):void{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
           print($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
