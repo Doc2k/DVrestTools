@@ -46,14 +46,6 @@
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           $stockColumns= array('stockNet');
-          foreach($Ergebnis as $item){
-            $ergebnisse[] = $item;
-            //$Stockergebnis= $repo2->listStockByWarehouse(1017, $stockColumns);
-            //foreach($Stockergebnis as $bestand){
-              //$item+=['Stock_netto' => $bestand->stockNet];
-              //$item+=['Stock_Phys' => $bestand->stockPhysical];
-            //}
-          }
 
           $myData= array(
             'inhalte' => $ergebnisse,
@@ -71,17 +63,12 @@
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
 
-          $ergebnisse = array();
-          $correctColumns=['warehouseId'=>103, 'quantity'=>40, 'storageLocationId'=>0];
+          $correctColumns=['warehouseId'=>103, 'quantity'=>24, 'storageLocationId'=>0];
           $Stockergebnis= $repo->correctStock(1017, $correctColumns);
 
+          echo $this->request->get('callback')."({'success': 'true', 'newStock' : '24'})";
 
-          $myData= array(
-            'inhalte' => $ergebnisse,
-            'callb' => $this->request->get('callback')
-          );
 
-          // return $twig->render('DVrestTools::content.getStock2', $myData);
         }
       // ----------------------------------------------------
     }
