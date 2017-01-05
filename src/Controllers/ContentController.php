@@ -5,6 +5,7 @@
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\VariationStock\Contracts\VariationStockRepositoryContract;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
+    use Plenty\Modules\Item\VariationStock\Models\VariationStock;
 
 
     class ContentController extends Controller{
@@ -71,11 +72,11 @@
           header("access-control-allow-origin: *");
 
           $ergebnisse = array();
-          $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId'];
-          // $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
+          // $stockColumns= ['stockNet', 'stockPhysical', 'warehouseId'];
+          $stockColumns= ['variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']];
           // $stockColumns= array('stockNet');
 
-        $Stockergebnis= $repo->listStockByWarehouse(1017, $stockColumns);
+          $Stockergebnis= $repo->listStockByWarehouse(1017, $stockColumns);
           foreach($Stockergebnis as $item){
             $ergebnisse[] = $item;
             $alsstring= (string)$item;
