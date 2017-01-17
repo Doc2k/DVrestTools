@@ -61,7 +61,7 @@
 
       // Set Stock
       // ----------------------------------------------------
-        public function setStock(VariationStockRepositoryContract $repo1){
+        public function setStock(Twig $twig, VariationStockRepositoryContract $repo1){
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
           $correctColumns=['warehouseId'=>$this->request->get('warehouse'),'variationId'=>$this->request->get('variation_id'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
