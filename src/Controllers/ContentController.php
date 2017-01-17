@@ -64,13 +64,13 @@
         public function setStock(Twig $twig, VariationStockRepositoryContract $repo1){
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
-          $correctColumns=['warehouseId'=>$this->request->get('warehouse'),'variationId'=>$this->request->get('variation_id'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
+          $correctColumns=['warehouseId'=>$this->request->post('warehouse'),'variationId'=>$this->request->post('variation_id'), 'quantity'=>$this->request->post('quant'), 'storageLocationId'=>0];
           $antwort=array();
-          $repo1->correctStock($this->request->get('id'), $correctColumns);
+          $repo1->correctStock($this->request->post('id'), $correctColumns);
 
           $myData= array(
-            'menge' => $this->request->get('quant'),
-            'callb' => $this->request->get('callback')
+            'menge' => $this->request->post('quant'),
+            'callb' => $this->request->post('callback')
           );
           // $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})";
           // return $ausgeben;
