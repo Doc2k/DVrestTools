@@ -69,10 +69,10 @@
           $repo1->correctStock($this->request->get('id'), $correctColumns);
 
           $myData= array(
-            'inhalte' => $repo1,
-            'callb' => $this->request->get('callback')
+            'menge' => $this->request->get('quant'),
+            'callb' => $this->request->get('callback'),
           );
-          $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})";
+          $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".."})";
           return $twig->render('DVrestTools::content.setStock', $myData);
       // ----------------------------------------------------
     }
