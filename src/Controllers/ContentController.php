@@ -67,12 +67,9 @@
           $correctColumns=['warehouseId'=>$this->request->get('warehouse'),'variationId'=>$this->request->get('variation_id'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
           $antwort=array();
           $repo1->correctStock($this->request->get('id'), $correctColumns);
-          foreach($repo1 as $line){
-            $antwort[] = $line;
-          }
 
           $myData= array(
-            'inhalte' => $antwort,
+            'inhalte' => $repo1,
             'callb' => $this->request->get('callback')
           );
           $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})";

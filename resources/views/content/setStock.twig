@@ -1,7 +1,5 @@
 {% if inhalte is not null %}
-  {% for line in inhalte %}
-    {{ callb }}({{ item }})
-  {% endfor %}
+    {{ callb }}({{ inhalte }})
 {% else %}
         Nanü
 {% endif %}
