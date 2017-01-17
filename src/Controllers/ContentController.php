@@ -65,14 +65,12 @@
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
           $correctColumns=['warehouseId'=>$this->request->get('warehouse'),'variationId'=>$this->request->get('variation_id'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
-          $antwort=array();
           $repo1->correctStock($this->request->get('id'), $correctColumns);
-
           $myData= array(
             'menge' => $this->request->get('quant'),
             'callb' => $this->request->get('callback'),
           );
-          return $twig->render('DVrestTools::content.setStock', $myData);
+          return $twig->renderView('DVrestTools::content.setStock', $myData);
       // ----------------------------------------------------
     }
 }
