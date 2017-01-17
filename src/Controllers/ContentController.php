@@ -72,7 +72,6 @@
             'menge' => $this->request->get('quant'),
             'callb' => $this->request->get('callback'),
           );
-          $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".."})";
           return $twig->render('DVrestTools::content.setStock', $myData);
       // ----------------------------------------------------
     }
