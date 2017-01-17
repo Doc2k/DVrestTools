@@ -62,7 +62,7 @@
       // Set Stock
       // ----------------------------------------------------
         public function setStock(VariationStockRepositoryContract $repo1){
-          $correctColumns=['warehouseId'=>$this->request->get('warehouse'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
+          $correctColumns=['warehouseId'=>$this->request->get('warehouse'),'variation_id'=>$this->request->get('variation_id'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
 
           $repo1->correctStock($this->request->get('id'), $correctColumns);
           echo ($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
