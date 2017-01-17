@@ -61,16 +61,20 @@
 
       // Set Stock
       // ----------------------------------------------------
-        public function setStock(Twig $twig, VariationStockRepositoryContract $repo1){
+        public function setStock(VariationStockRepositoryContract $repo1){
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
           $correctColumns=['warehouseId'=>$this->request->get('warehouse'),'variationId'=>$this->request->get('variation_id'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
+          $antwort=array();
           $repo1->correctStock($this->request->get('id'), $correctColumns);
+  
           $myData= array(
             'menge' => $this->request->get('quant'),
-            'callb' => $this->request->get('callback'),
+            'callb' => $this->request->get('callback')
           );
-          return $twig->renderView('DVrestTools::content.setStock', $myData);
+          $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})"
+          return $ausgeben;
+          //return $twig->render('DVrestTools::content.setStock', $myData);
       // ----------------------------------------------------
     }
 }
