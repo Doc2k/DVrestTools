@@ -65,9 +65,18 @@
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
           $correctColumns=['warehouseId'=>$this->request->get('warehouse'),'variationId'=>$this->request->get('variation_id'), 'quantity'=>$this->request->get('quant'), 'storageLocationId'=>0];
-
+          $antwort=array();
           $repo1->correctStock($this->request->get('id'), $correctColumns);
-          echo ($this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})");
+          foreach($repo1 as $line){
+            $antwort[] = $line;
+          }
+
+          $myData= array(
+            'inhalte' => $antwort,
+            'callb' => $this->request->get('callback')
+          );
+          $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})";
+          return $ausgeben;
       // ----------------------------------------------------
     }
 }
