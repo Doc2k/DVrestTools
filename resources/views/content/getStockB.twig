@@ -4,6 +4,7 @@
     {% if(Zaehler==0) %}
       {{ callb }}({'Name': '{{ item.itemDescription.name1 }}', 'Warehouse' : '{{ item.variationStock.warehouseId }}',
     {% endif %}
+    {% Zaehler++ %}
      '{{ item.variationBase.id }}' : '{'nettoStock' : '{{ item.variationStock.stockNet }}', 'physStock' : '{{ item.variationStock.stockPhysical }}'}'
   {% endfor %}
   })
