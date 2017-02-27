@@ -90,7 +90,7 @@
             'variationBase' => ['id', 'itemId', 'variationName', 'limitOrderByStockSelect', 'autoStockVisible', 'autoStockInvisible', 'active', 'availability', 'mainWarehouse'],
             'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
           ];
-          $itemFilter = [];
+          $itemFilter = ['isVisibleForClient'=>0];
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
