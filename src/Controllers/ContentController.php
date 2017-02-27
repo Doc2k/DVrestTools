@@ -76,5 +76,36 @@
           // return $ausgeben;
           return $twig->render('DVrestTools::content.setStock', $myData);
       // ----------------------------------------------------
+
+      // Get Visibilities
+      // ----------------------------------------------------
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
+          header('content-type: application/json; charset=utf-8');
+          header("access-control-allow-origin: *");
+
+          $augabespalten =[
+            'itemBase' => ['id'],
+            'itemDescription' => ['name1'],
+            'variationBase' => ['id', '	itemId', 'variationName', 'limitOrderByStockSelect', 'autoStockVisible', '	autoStockInvisible', 'active', 'availability', 'mainWarehouse'],
+            'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
+          ];
+          $itemFilter = [];
+          $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
+
+          $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
+          $ergebnisse = array();
+          foreach($Ergebnis as $item){
+            $ergebnisse[] = $item;
+          }
+
+          $myData= array(
+            'inhalte' => $ergebnisse,
+            'callb' => $this->request->get('callback')
+          );
+
+          return $twig->render('DVrestTools::content.getVisibilities', $myData);
+        }
+      // ----------------------------------------------------
+
     }
 }

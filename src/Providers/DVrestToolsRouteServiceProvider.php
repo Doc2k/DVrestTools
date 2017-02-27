@@ -1,8 +1,6 @@
 <?php
 
     namespace DVrestTools\Providers;
-
-
     use Plenty\Plugin\RouteServiceProvider;
     use Plenty\Plugin\Routing\Router;
 
@@ -13,5 +11,6 @@
           $router->get('auth','DVrestTools\Controllers\ContentController@getToken');
           $router->get('getstock','DVrestTools\Controllers\ContentController@getStock');
           $router->get('setstock','DVrestTools\Controllers\ContentController@setStock');
+          $router->get('getvisibilities','DVrestTools\Controllers\ContentController@getVisibilities');
         }
     }
