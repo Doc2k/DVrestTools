@@ -87,7 +87,7 @@
           $augabespalten =[
             'itemBase' => ['id'],
             'itemDescription' => ['name1'],
-            'variationBase' => ['id', '	itemId', 'variationName', 'limitOrderByStockSelect', 'autoStockVisible', '	autoStockInvisible', 'active', 'availability', 'mainWarehouse'],
+            'variationBase' => ['id', 'itemId', 'variationName', 'limitOrderByStockSelect', 'autoStockVisible', 'autoStockInvisible', 'active', 'availability', 'mainWarehouse'],
             'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
           ];
           $itemFilter = [];
