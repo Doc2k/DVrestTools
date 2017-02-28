@@ -96,7 +96,7 @@
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           foreach($Ergebnis as $item){
-            echo '<div>'.$Ergebnis.itemBase.id.'</div>';
+            echo '<div>'.$item.itemBase.id.'</div>';
             flush();
           }
 
