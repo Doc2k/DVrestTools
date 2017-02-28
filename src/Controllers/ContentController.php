@@ -97,7 +97,7 @@
           $ergebnisse = array();
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
-            print_r($item);
+            var_dump($item);
           }
 
         }
