@@ -81,7 +81,7 @@
       // Get Visibilities
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo, ContactAuthenticationRepositoryContract $authRepo){
-          $login= $authRepo->authenticateWithContactEmail('spam@doc2k.de', 'DvR3sT4p1Us3r!');
+          $login= $authRepo->authenticateWithContactEmail(1005, 'DvR3sT4p1Us3r!');
 
           $augabespalten =[
             'itemBase' => ['id'],
