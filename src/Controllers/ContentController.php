@@ -91,7 +91,7 @@
           $ergebnisse = array();
           $anzahl= count($Ergebnis);
           foreach($Ergebnis as $item){
-            $Ergebnis[0].itemBase.id;
+            echo($item['itemBase']['id']);
             $ergebnisse[] = $item;
 
           }
