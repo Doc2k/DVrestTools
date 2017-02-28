@@ -89,13 +89,17 @@
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          foreach($Ergebnis as $item => $bereich){
-echo $item;
-echo $bereich;
-            foreach($bereich as $key => $val){
-              echo $key;
-            }
+          $ergebnisse = array();
+          foreach($Ergebnis as $item){
+            $ergebnisse[] = $item;
           }
+
+          $myData= array(
+            'inhalte' => $ergebnisse,
+            'callb' => 'callback'
+          );
+
+          return $twig->render('DVrestTools::content.getVisibilities2', $myData);
 
         }
       // ----------------------------------------------------
