@@ -79,7 +79,7 @@
 
       // Get Visibilities
       // ----------------------------------------------------
-        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo){
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo){
           $augabespalten =[
             'itemDescription' => ['name1'],
             'variationBase' => ['id'],
