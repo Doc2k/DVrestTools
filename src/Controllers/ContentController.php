@@ -95,10 +95,13 @@
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          foreach($Ergebnis as $item){
+          foreach($Ergebnis as list($item, list(list($itemId), list($itemName), list($a, $b, $c, $d, $e, $f, $g, $h, $i), list($j, $k, $l)))){
             $ergebnisse[] = $item;
-            echo $item.variationBase.id;
+
+            echo '<div>'.$itemId.'</div>';
+            echo '<div>'.$itemName.'</div>';
           }
+
 
         }
       // ----------------------------------------------------
