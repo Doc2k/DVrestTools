@@ -82,7 +82,7 @@
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo, ContactAuthenticationRepositoryContract $authRepo, AfterAccountAuthentication $afterAuthRepo){
           $authRepo->authenticateWithContactId(15, 'DvR3sT4p1Us3r!');
-          if($afterAuthRepo.isSuccessful()){
+          if($afterAuthRepo->isSuccessful()){
             echo 'haha';
           }
           /*
