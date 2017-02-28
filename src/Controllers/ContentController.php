@@ -78,7 +78,7 @@
 
       // Get Visibilities
       // ----------------------------------------------------
-        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo){
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo):string{
           $augabespalten =[
             'itemBase' => ['id'],
             'itemDescription' => ['name1'],
@@ -90,7 +90,8 @@
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           foreach($Ergebnis as $item => $bereich){
-
+echo $item;
+echo $bereich;
             foreach($bereich as $key => $val){
               echo $key;
             }
