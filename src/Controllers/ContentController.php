@@ -95,12 +95,15 @@
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          foreach($Ergebnis as list($item, list(list($itemId), list($itemName), list($a, $b, $c, $d, $e, $f, $g, $h, $i), list($j, $k, $l)))){
+          foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
-
-            echo '<div>'.$itemId.'</div>';
-            echo '<div>'.$itemName.'</div>';
           }
+          //foreach($Ergebnis as list(list(list($itemId), list($itemName), list($a, $b, $c, $d, $e, $f, $g, $h, $i), list($j, $k, $l)))){
+
+
+            //echo '<div>'.$itemId.'</div>';
+            //echo '<div>'.$itemName.'</div>';
+          //}
 
 
         }
