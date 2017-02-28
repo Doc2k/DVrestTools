@@ -95,7 +95,7 @@
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           foreach($Ergebnis as $key => $leckomio){
-            echo '<div>'.$key'</div>';
+            echo '<div>'.$key.'</div>';
             echo '<div>'.$leckomio.'</div>';
           }
 
