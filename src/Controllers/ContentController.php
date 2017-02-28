@@ -6,6 +6,8 @@
     use Plenty\Modules\Item\VariationStock\Contracts\VariationStockRepositoryContract;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
     use Plenty\Modules\Item\Variation\Contracts\VariationRepositoryContract;
+    use Plenty\Modules\Authentication\Contracts\ContactAuthenticationRepositoryContract;
+    use Plenty\Modules\Authentication\Events\AfterAccountAuthentication;
 
 
     class ContentController extends Controller{
@@ -78,10 +80,11 @@
 
       // Get Visibilities
       // ----------------------------------------------------
-        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo){
-          ?>
-
-          <?php
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo, ContactAuthenticationRepositoryContract $authRepo, AfterAccountAuthentication $afterAuthRepo){
+          $authRepo->authenticateWithContactId(15, 'DvR3sT4p1Us3r!');
+          $afterAuthRepo.sucess(){
+            echo 'haha';
+          }
           $augabespalten =[
             'itemBase' => ['id'],
             'itemDescription' => ['name1'],
@@ -101,7 +104,21 @@
             $varID= $item['variationBase']['id'];
 
             $VariationAbfrage = $VarRepo->show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
-          
+            foreach($VariationAbfrage as $varItem){
+              $beschraenkung= $varItem['stockLimitation'];
+              $autoSichtbar= $varItem['isAvailableIfNetStockIsPositive'];
+              $autoUnsichtbar= $varItem['isAvailableIfNetStockIsNotPositive'];
+              $autoGruen= $varItem['isAvailableIfNetStockIsPositive'];
+              $autoRot= $varItem['isUnavailableIfNetStockIsNotPositive'];
+              $varActive = $varItem['isActive'];
+              echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
+              $clientzaehler=0;
+              foreach($varItem['variationClients'] as $client){
+                echo 'Client:'.$client[$clientzaehler];
+                $clientzaehler++;
+              }
+              echo '<div>';
+            }
 
             $zaehler++;
           }
