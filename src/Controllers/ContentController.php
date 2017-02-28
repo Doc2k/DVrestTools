@@ -96,7 +96,7 @@
           foreach($Ergebnis as $item){
             echo($item['itemBase']['id']);
             $ergebnisse[] = $item;
-            echo($ergebnisse[0]['item']['itemBase']['id']);
+            echo($ergebnisse[0]['itemBase']['id']);
 
           }
 
