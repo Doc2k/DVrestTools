@@ -94,9 +94,9 @@
           $itemParams = ['language' => 'de', 'type' => 'virtual'];
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
-          foreach($Ergebnis as $leckomio){
-            echo '<div>'.$leckomio.variationBase.itemId.'</div>';
-            echo '<div>'.$leckomio.variationBase.id.'</div>';
+          foreach($Ergebnis as $key => $leckomio){
+            echo '<div>'.$key.variationBase.itemId.'</div>';
+            echo '<div>'.$key.variationBase.id.'</div>';
           }
 
         }
