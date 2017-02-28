@@ -91,12 +91,13 @@
           ];
           // $itemFilter = ['isVisibleForClient'=> ['clientId' => [0]]];
           $itemFilter = [];
-          $itemParams = ['language' => 'de', 'type' => 'virtual'];
+          $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
-          foreach($Ergebnis as $key => $leckomio){
-            echo '<div>'.$key.'</div>';
-            echo '<div>'.$leckomio.itemDescription.name1.'</div>';
+          $ergebnisse = array();
+          foreach($Ergebnis as &$item){
+            $ergebnisse[] = $item;
+            echo '<div>'.$item.itemDescription.name1.'</div>';
           }
 
         }
