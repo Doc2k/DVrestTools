@@ -81,12 +81,8 @@
       // Get Visibilities
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo, ContactAuthenticationRepositoryContract $authRepo, AfterAccountAuthentication $afterAuthRepo){
-          $authRepo->authenticateWithContactId(15, 'DvR3sT4p1Us3r!');
-          $erfolg= $afterAuthRepo->isSuccessful();
-          if($erfolg){
-            echo 'haha';
-          }
-          /*
+          $login= $authRepo->authenticateWithContactId(15, 'DvR3sT4p1Us3r!');
+
           $augabespalten =[
             'itemBase' => ['id'],
             'itemDescription' => ['name1'],
@@ -124,7 +120,7 @@
 
             $zaehler++;
           }
-*/
+
 
         }
       // ----------------------------------------------------
