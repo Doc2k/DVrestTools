@@ -45,7 +45,6 @@
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          $stockColumns= array('stockNet');
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
           }
@@ -90,9 +89,13 @@
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          foreach($Ergebnis as list(list($itemId), list($itemName))){
-            echo $itemId.id.' ->'.$itemName;
+          foreach($Ergebnis as $item => $bereich){
+
+            foreach($bereich as $key => $val){
+              echo $key;
+            }
           }
+
         }
       // ----------------------------------------------------
 
