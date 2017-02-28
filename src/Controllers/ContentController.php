@@ -90,7 +90,7 @@
             'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
           ];
           // $itemFilter = ['isVisibleForClient'=> ['clientId' => [0]]];
-          $itemFilter = ['itemBase.hasId' => ['itemId' => ['19002']]];
+          $itemFilter = ['itemBase.hasId' => ['itemId' => ['$this->request->get('id')']]];
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
