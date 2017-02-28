@@ -94,9 +94,9 @@
           $itemParams = ['language' => 'de', 'type' => 'virtual'];
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
-          $ergebnisse = array();
           foreach($Ergebnis as $item){
-            echo '<div>'.$item.itemBase.id.'</div>';
+            echo '<div>'.$item.variationBase.itemId.'</div>';
+            echo '<div>'.$item.variationBase.id.'</div>';
           }
 
         }
