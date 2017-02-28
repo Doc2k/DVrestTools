@@ -90,10 +90,8 @@
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          echo 'jups';
-          foreach($Ergebnis as $item){
-            $ergebnisse[] = $item;
-            echo 'jups';
+          foreach($Ergebnis as list($itemId), list($itemName)){
+            echo $itemId.' ->'.$itemName;
           }
         }
       // ----------------------------------------------------
