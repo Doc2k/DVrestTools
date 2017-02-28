@@ -79,6 +79,9 @@
       // Get Visibilities
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo){
+          ?>
+
+          <?php
           $augabespalten =[
             'itemBase' => ['id'],
             'itemDescription' => ['name1'],
@@ -93,6 +96,7 @@
           foreach($Ergebnis as $item){
             echo($item['itemBase']['id']);
             $ergebnisse[] = $item;
+            echo($ergebnisse[0]['item']['itemBase']['id']);
 
           }
 
