@@ -49,7 +49,7 @@
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
           }
-          unset($item);
+
           $myData= array(
             'inhalte' => $ergebnisse,
             'callb' => $this->request->get('callback')
@@ -81,8 +81,9 @@
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo){
           $augabespalten =[
+            'itemBase' => ['id'],
             'itemDescription' => ['name1'],
-            'variationBase' => ['id'],
+            'variationBase' => ['id', 'itemId', 'variationName', 'limitOrderByStockSelect', 'autoStockVisible', 'autoStockInvisible', 'active', 'availability', 'mainWarehouse'],
             'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
           ];
           $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
@@ -91,6 +92,7 @@
           $ergebnisse = array();
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
+            echo 'jups';
           }
         }
       // ----------------------------------------------------
