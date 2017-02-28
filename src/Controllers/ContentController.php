@@ -91,7 +91,7 @@
           ];
           // $itemFilter = ['isVisibleForClient'=> ['clientId' => [0]]];
           $itemFilter = [];
-          $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
+          $itemParams = ['language' => 'de', 'type' => 'virtual'];
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
