@@ -5,6 +5,7 @@
     use Plenty\Plugin\Http\Request;
     use Plenty\Modules\Item\VariationStock\Contracts\VariationStockRepositoryContract;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
+    use Plenty\Modules\Item\Variation\Contracts\VariationRepositoryContract;
 
 
     class ContentController extends Controller{
@@ -72,15 +73,13 @@
             'menge' => $this->request->get('quant'),
             'callb' => $this->request->get('callback')
           );
-          // $ausgeben= $this->request->get('callback')."({'success': 'true', 'newStock' : ".$this->request->get('quant')."})";
-          // return $ausgeben;
           return $twig->render('DVrestTools::content.setStock', $myData);
         }
       // ----------------------------------------------------
 
       // Get Visibilities
       // ----------------------------------------------------
-        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo):string{
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $DataLayer, VariationRepositoryContract $VariationRepository):string{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
 
@@ -90,21 +89,37 @@
             'variationBase' => ['id', 'itemId', 'variationName', 'limitOrderByStockSelect', 'autoStockVisible', 'autoStockInvisible', 'active', 'availability', 'mainWarehouse'],
             'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
           ];
-          $itemFilter = ['isVisibleForClient'=> ['clientId' => [0]]];
+          // $itemFilter = ['isVisibleForClient'=> ['clientId' => [0]]];
+          $itemFilter = [];
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
 
-          $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
+          $ItemSuche = $DataLayer->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          foreach($Ergebnis as $item){
-            $ergebnisse[] = $item;
+          foreach($ItemSuche as $item){
+            echo '<div>';
+            $itemID= $item.itemBase.id;
+            $varID= $item.variationBase.id;
+
+            $itemAvail= $item.variationBase.availability;
+
+            $VariationAbfrage = $VariationRepository.show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
+
+            $beschraenkung= $VariationAbfrage.stockLimitation;
+            $autoSichtbar= $VariationAbfrage.isAvailableIfNetStockIsPositive;
+            $autoUnsichtbar= $VariationAbfrage.isAvailableIfNetStockIsNotPositive;
+            $autoGruen= $VariationAbfrage.isAvailableIfNetStockIsPositive;
+            $autoRot= $VariationAbfrage.isUnavailableIfNetStockIsNotPositive;
+            $varActive = $VariationAbfrage.isActive;
+            echo 'ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
+            foreach($VariationAbfrage.variationClients as $client){
+              echo 'Client:'.$client.ClientId;
+            }
+            echo '<div>';
+
+
+
           }
 
-          $myData= array(
-            'inhalte' => $ergebnisse,
-            'callb' => $this->request->get('callback')
-          );
-
-          return $twig->render('DVrestTools::content.getVisibilities', $myData);
         }
       // ----------------------------------------------------
 
