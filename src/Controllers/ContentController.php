@@ -95,8 +95,8 @@
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           foreach($Ergebnis as $key => $leckomio){
-            echo '<div>'.$key.variationBase.itemId.'</div>';
-            echo '<div>'.$key.variationBase.id.'</div>';
+            echo '<div>'.$key'</div>';
+            echo '<div>'.$leckomio.'</div>';
           }
 
         }
