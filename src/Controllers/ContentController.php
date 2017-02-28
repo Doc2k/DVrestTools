@@ -95,9 +95,9 @@
 
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          foreach($Ergebnis as &$item){
+          foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
-            echo '<div>'.$item.itemDescription.name1.'</div>';
+            print_r($item);
           }
 
         }
