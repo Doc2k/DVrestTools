@@ -89,11 +89,8 @@
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          $ergebnisse = array();
           echo(count($Ergebnis));
-          for ($i = 1; $i <= 10; $i++) {
-              echo $i;
-          }
+
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
           }
