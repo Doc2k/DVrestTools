@@ -97,7 +97,7 @@
           $ergebnisse = array();
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
-            var_dump($item);
+            echo $item.variationBase.id;
           }
 
         }
