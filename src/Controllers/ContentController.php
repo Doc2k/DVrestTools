@@ -90,16 +90,14 @@
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           $ergebnisse = array();
+          echo(count($Ergebnis));
+          for ($i = 1; $i <= 10; $i++) {
+              echo $i;
+          }
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
           }
 
-          $myData= array(
-            'inhalte' => $ergebnisse,
-            'callb' => 'callback'
-          );
-
-          return $twig->render('DVrestTools::content.getVisibilities2', $myData);
 
         }
       // ----------------------------------------------------
