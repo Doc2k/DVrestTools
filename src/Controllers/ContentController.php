@@ -97,17 +97,17 @@
             echo($item['variationBase']['id']);
             $ergebnisse[] = $item;
             // echo($ergebnisse[0]['itemBase']['id']);
-            $itemID=$item['itemBase']['id'];
-            $varID= item['variationBase']['id'];
+            $itemID= $item['itemBase']['id'];
+            $varID= $item['variationBase']['id'];
 
-            $VariationAbfrage = $VarRepo.show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
+            $VariationAbfrage = $VarRepo->show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
 
-            $beschraenkung= $VariationAbfrage.stockLimitation;
-            $autoSichtbar= $VariationAbfrage.isAvailableIfNetStockIsPositive;
-            $autoUnsichtbar= $VariationAbfrage.isAvailableIfNetStockIsNotPositive;
-            $autoGruen= $VariationAbfrage.isAvailableIfNetStockIsPositive;
-            $autoRot= $VariationAbfrage.isUnavailableIfNetStockIsNotPositive;
-            $varActive = $VariationAbfrage.isActive;
+            $beschraenkung= $VariationAbfrage['stockLimitation'];
+            $autoSichtbar= $VariationAbfrage['isAvailableIfNetStockIsPositive'];
+            $autoUnsichtbar= $VariationAbfrage['isAvailableIfNetStockIsNotPositive'];
+            $autoGruen= $VariationAbfrage['isAvailableIfNetStockIsPositive'];
+            $autoRot= $VariationAbfrage['isUnavailableIfNetStockIsNotPositive'];
+            $varActive = $VariationAbfrage['isActive'];
             echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
             foreach($VariationAbfrage.variationClients as $client){
               echo 'Client:'.$client['ClientId'];
