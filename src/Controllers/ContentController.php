@@ -102,12 +102,12 @@
 
             $VariationAbfrage = $VarRepo->show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
 
-            $beschraenkung= $VariationAbfrage['stockLimitation'];
-            $autoSichtbar= $VariationAbfrage['isAvailableIfNetStockIsPositive'];
-            $autoUnsichtbar= $VariationAbfrage['isAvailableIfNetStockIsNotPositive'];
-            $autoGruen= $VariationAbfrage['isAvailableIfNetStockIsPositive'];
-            $autoRot= $VariationAbfrage['isUnavailableIfNetStockIsNotPositive'];
-            $varActive = $VariationAbfrage['isActive'];
+            $beschraenkung= $VariationAbfrage[0]['stockLimitation'];
+            $autoSichtbar= $VariationAbfrage[0]['isAvailableIfNetStockIsPositive'];
+            $autoUnsichtbar= $VariationAbfrage[0]['isAvailableIfNetStockIsNotPositive'];
+            $autoGruen= $VariationAbfrage[0]['isAvailableIfNetStockIsPositive'];
+            $autoRot= $VariationAbfrage[0]['isUnavailableIfNetStockIsNotPositive'];
+            $varActive = $VariationAbfrage[0]['isActive'];
             echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
             foreach($VariationAbfrage.variationClients as $client){
               echo 'Client:'.$client['ClientId'];
