@@ -88,7 +88,13 @@
           $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
-          echo(count($Ergebnis));
+          $ergebnisse = array();
+          foreach($Ergebnis as $key => $bereich){
+            echo $key;
+            echo $bereich;
+
+          }
+
         }
       // ----------------------------------------------------
 
