@@ -81,15 +81,12 @@
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $repo2):string{
           $augabespalten =[
-            'itemBase' => ['id'],
             'itemDescription' => ['name1'],
-            'variationBase' => ['id', 'itemId', 'variationName', 'limitOrderByStockSelect', 'autoStockVisible', 'autoStockInvisible', 'active', 'availability', 'mainWarehouse'],
+            'variationBase' => ['id'],
             'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
           ];
           $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
-          echo $this->request->get('id').'<br />';
-          echo $this->request->get('warehouse');
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           foreach($Ergebnis as $item){
