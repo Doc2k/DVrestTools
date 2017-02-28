@@ -92,12 +92,29 @@
           $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          $anzahl= count($Ergebnis);
+          $zaehler=0;
           foreach($Ergebnis as $item){
-            echo($item['itemBase']['id']);
+            echo($item['variationBase']['id']);
             $ergebnisse[] = $item;
-            echo($ergebnisse[0]['itemBase']['id']);
+            // echo($ergebnisse[0]['itemBase']['id']);
+            $itemID=$item['itemBase']['id'];
+            $varID= item['variationBase']['id'];
 
+            $VariationAbfrage = $VarRepo.show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
+
+            $beschraenkung= $VariationAbfrage.stockLimitation;
+            $autoSichtbar= $VariationAbfrage.isAvailableIfNetStockIsPositive;
+            $autoUnsichtbar= $VariationAbfrage.isAvailableIfNetStockIsNotPositive;
+            $autoGruen= $VariationAbfrage.isAvailableIfNetStockIsPositive;
+            $autoRot= $VariationAbfrage.isUnavailableIfNetStockIsNotPositive;
+            $varActive = $VariationAbfrage.isActive;
+            echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
+            foreach($VariationAbfrage.variationClients as $client){
+              echo 'Client:'.$client['ClientId'];
+            }
+            echo '<div>';
+
+            $zaehler++;
           }
 
 
