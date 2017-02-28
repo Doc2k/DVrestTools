@@ -80,9 +80,6 @@
       // Get Visibilities
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $repo2):string{
-          header('content-type: application/json; charset=utf-8');
-          header("access-control-allow-origin: *");
-
           $augabespalten =[
             'itemBase' => ['id'],
             'itemDescription' => ['name1'],
@@ -98,14 +95,6 @@
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
           }
-          //foreach($Ergebnis as list(list(list($itemId), list($itemName), list($a, $b, $c, $d, $e, $f, $g, $h, $i), list($j, $k, $l)))){
-
-
-            //echo '<div>'.$itemId.'</div>';
-            //echo '<div>'.$itemName.'</div>';
-          //}
-
-
         }
       // ----------------------------------------------------
 
