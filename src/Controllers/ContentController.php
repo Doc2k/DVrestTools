@@ -97,7 +97,6 @@
           $ergebnisse = array();
           foreach($Ergebnis as $item){
             echo '<div>'.$item.itemBase.id.'</div>';
-            flush();
           }
 
         }
