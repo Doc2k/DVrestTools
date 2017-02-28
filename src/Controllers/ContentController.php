@@ -91,7 +91,7 @@
           $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
           foreach($Ergebnis as list(list($itemId), list($itemName))){
-            echo $itemId.' ->'.$itemName;
+            echo $itemId.id.' ->'.$itemName;
           }
         }
       // ----------------------------------------------------
