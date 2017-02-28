@@ -79,7 +79,7 @@
 
       // Get Visibilities
       // ----------------------------------------------------
-        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $DataLayer, VariationRepositoryContract $VariationRepository):string{
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $repo2):string{
           header('content-type: application/json; charset=utf-8');
           header("access-control-allow-origin: *");
 
@@ -91,32 +91,12 @@
           ];
           // $itemFilter = ['isVisibleForClient'=> ['clientId' => [0]]];
           $itemFilter = [];
-          $itemParams = ['language' => 'de', 'type' => 'virtual'];
+          $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
 
-          $ItemSuche = $DataLayer->search($augabespalten, $itemFilter, $itemParams);
+          $Ergebnis = $repo->search($augabespalten, $itemFilter, $itemParams);
           $ergebnisse = array();
-          foreach($ItemSuche as $item){
-            echo '<div>';
-            $itemID= $item.itemBase.id;
-            $varID= $item.variationBase.id;
-
-            $itemAvail= $item.variationBase.availability;
-
-            $VariationAbfrage = $VariationRepository.findById($varID);
-
-            $beschraenkung= $VariationAbfrage.stockLimitation;
-            $autoSichtbar= $VariationAbfrage.isAvailableIfNetStockIsPositive;
-            $autoUnsichtbar= $VariationAbfrage.isAvailableIfNetStockIsNotPositive;
-            $autoGruen= $VariationAbfrage.isAvailableIfNetStockIsPositive;
-            $autoRot= $VariationAbfrage.isUnavailableIfNetStockIsNotPositive;
-            $varActive = $VariationAbfrage.isActive;
-            echo 'ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
-            foreach($VariationAbfrage.variationClients as $client){
-              echo 'Client:'.$client.ClientId;
-            }
-            echo '<div>';
-
-
+          foreach($Ergebnis as $item){
+            echo '$Ergebnis.itemBase.id';
 
           }
 
