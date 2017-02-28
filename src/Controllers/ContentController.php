@@ -49,7 +49,7 @@
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
           }
-
+          unset($item);
           $myData= array(
             'inhalte' => $ergebnisse,
             'callb' => $this->request->get('callback')
@@ -79,7 +79,7 @@
 
       // Get Visibilities
       // ----------------------------------------------------
-        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $repo2):string{
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo){
           $augabespalten =[
             'itemDescription' => ['name1'],
             'variationBase' => ['id'],
