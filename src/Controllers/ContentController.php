@@ -111,10 +111,11 @@
               ->setReferenceType('VariationRepositoryContract')
               ->setReferenceValue($varID)
               ->info('DVrestTools::log.successMessage', $VariationAbfrage);
-
+            $Varergebnisse = array();
+            $Varergebnisse[] = $VariationAbfrage;
             $varabfrageZaehler=0;
-            $myText = (string)$VariationAbfrage->mainWarehouseId;
-            echo($myText);
+            $myText = (string)$Varergebnisse[0]['mainWarehouseId'];
+            echo('Lala:'$myText);
 
             $beschraenkung= (string)$VariationAbfrage->stockLimitation;
             $autoSichtbar= (string)$VariationAbfrage->isVisibleIfNetStockIsPositive;
