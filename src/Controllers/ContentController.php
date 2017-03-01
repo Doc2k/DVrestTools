@@ -85,7 +85,7 @@
       // ----------------------------------------------------
         public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo, ContactAuthenticationRepositoryContract $authRepo){
           //$login= $authRepo->authenticateWithContactId(15, 'DvR3sT4p1Us3r!');
-
+          $plentyId = '18507';
           $augabespalten =[
             'itemBase' => ['id'],
             'itemDescription' => ['name1'],
@@ -106,15 +106,15 @@
             $with['variationClients'] = true;
             $lang = "de";
             $VariationAbfrage = $VarRepo->show($varID, $with, $lang);
+
             $this
               ->getLogger("ContentController_show")
               ->setReferenceType('VariationRepositoryContract')
               ->setReferenceValue($varID)
               ->info('DVrestTools::log.successMessage', $VariationAbfrage);
+
             $Varergebnisse = array();
             $Varergebnisse[] = $VariationAbfrage;
-            $myText = (string)$Varergebnisse[0]['mainWarehouseId'];
-            echo('Lala:'.$myText);
 
             $beschraenkung= (string)$Varergebnisse[0]['stockLimitation'];
             $autoSichtbar= (string)$Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
@@ -126,7 +126,7 @@
             $varabfrageZaehler++;
             $clientzaehler=0;
             foreach($Varergebnisse[0]['variationClients'] as $client){
-              echo 'Client:'.$client;
+              echo 'Client:'.$client['plentyId'];
               $clientzaehler++;
             }
             echo '<div>';
