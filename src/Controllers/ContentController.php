@@ -96,7 +96,7 @@
           $zaehler=0;
           foreach($Ergebnis as $item){
             echo($item['variationBase']['id']);
-            echo '<div>'.$zaehler.'</div>';
+            echo '<div> foreach Items'.$zaehler.'</div>';
             $ergebnisse[] = $item;
             // echo($ergebnisse[0]['itemBase']['id']);
             $itemID= $item['itemBase']['id'];
@@ -111,8 +111,9 @@
               $autoGruen= $varItem['isAvailableIfNetStockIsPositive'];
               $autoRot= $varItem['isUnavailableIfNetStockIsNotPositive'];
               $varActive = $varItem['isActive'];
+              $varClients=$varItem['variationClients'];
               echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
-              echo '<div>'.$varabfrageZaehler.'</div>';
+              echo '<div> foreach Varia-Abfrage'.$varabfrageZaehler.'</div>';
               $varabfrageZaehler++;
               $clientzaehler=0;
               foreach($varItem['variationClients'] as $client){
