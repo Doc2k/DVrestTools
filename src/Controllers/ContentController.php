@@ -115,6 +115,7 @@
               ->info('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
 
             $varabfrageZaehler=0;
+            echo($VariationAbfrage->mainWarehouseId);
             foreach($VariationAbfrage as $varItem){
               $beschraenkung= $varItem->stockLimitation;
               $autoSichtbar= $varItem['isAvailableIfNetStockIsPositive'];
