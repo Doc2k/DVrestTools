@@ -105,9 +105,11 @@
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
 
-            $VariationAbfrage = $VarRepo->findById($varID);
+            $with['variationClients'] = true;
+            $lang = "de";
+            $VariationAbfrage = $VarRepo->show($varID, $with, $lang);
             $this
-              ->getLogger("ContentController_findById")
+              ->getLogger("ContentController_show")
               ->setReferenceType('VariationRepositoryContract')
               ->setReferenceValue($varID)
               ->info('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
