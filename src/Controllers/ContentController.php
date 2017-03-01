@@ -113,19 +113,19 @@
               ->info('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
 
             $varabfrageZaehler=0;
-            $myText = (string)$VariationAbfrage['mainWarehouseId'];
+            $myText = (string)$VariationAbfrage->mainWarehouseId;
             echo($myText);
 
             $beschraenkung= (string)$VariationAbfrage->stockLimitation;
-            $autoSichtbar= (string)$VariationAbfrage['isAvailableIfNetStockIsPositive'];
-            $autoUnsichtbar= (string)$VariationAbfrage['isAvailableIfNetStockIsNotPositive'];
-            $autoGruen= (string)$VariationAbfrage['isAvailableIfNetStockIsPositive'];
-            $autoRot= (string)$VariationAbfrage['isUnavailableIfNetStockIsNotPositive'];
-            $varActive = (string)$VariationAbfrage['isActive'];
+            $autoSichtbar= (string)$VariationAbfrage->isAvailableIfNetStockIsPositive;
+            $autoUnsichtbar= (string)$VariationAbfrage->isAvailableIfNetStockIsNotPositive;
+            $autoGruen= (string)$VariationAbfrage->isAvailableIfNetStockIsPositive;
+            $autoRot= (string)$VariationAbfrage->isUnavailableIfNetStockIsNotPositive;
+            $varActive = (string)$VariationAbfrage->isActive;
             echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
             $varabfrageZaehler++;
             $clientzaehler=0;
-            foreach($varItem['variationClients'] as $client){
+            foreach($VariationAbfrage->variationClients as $client){
               echo 'Client:'.$client;
               $clientzaehler++;
             }
