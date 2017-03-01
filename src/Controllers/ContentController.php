@@ -99,10 +99,11 @@
           $zaehler=0;
           foreach($Ergebnis as $item){
             $ergebnisse[] = $item;
-            // echo($ergebnisse[0]['itemBase']['id']);
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
-            echo 'Erster Call<br /><div>ItemID:'.$itemID.' | VarID:'.$varID.'</div>';
+            $erstBeschraenkung= $item['variationBase']['limitOrderByStockSelect'];
+            echo 'Erster Call<br /><div>ItemID:'.$itemID.' | VarID:'.$varID.' | Beschränkung:'.$erstBeschraenkung.'</div>';
+
             $with['variationClients'] = true;
             $lang = "de";
             $VariationAbfrage = $VarRepo->show($varID, $with, $lang);
@@ -123,12 +124,16 @@
             $autoRot= (string)$Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
             $varActive = (string)$Varergebnisse[0]['isActive'];
             echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
-            $varabfrageZaehler++;
-            $clientzaehler=0;
+
+            $istaktuellSichtbar='nein';
             foreach($Varergebnisse[0]['variationClients'] as $client){
-              echo 'Client:'.$client['plentyId'];
-              $clientzaehler++;
+              if((string)$client['plentyId']==$plentyId){
+                $istaktuellSichtbar='ja';
+              }
             }
+
+            echo ' | Aktuell sichtbar:'.$istaktuellSichtbar;
+
             echo '<div>';
             $zaehler++;
           }
