@@ -115,7 +115,7 @@
             $Varergebnisse[] = $VariationAbfrage;
             $varabfrageZaehler=0;
             $myText = (string)$Varergebnisse[0]['mainWarehouseId'];
-            echo('Lala:'$myText);
+            echo('Lala:'.$myText);
 
             $beschraenkung= (string)$VariationAbfrage->stockLimitation;
             $autoSichtbar= (string)$VariationAbfrage->isVisibleIfNetStockIsPositive;
