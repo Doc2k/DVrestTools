@@ -120,12 +120,12 @@
             $autoSichtbar= (string)$Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
             $autoUnsichtbar= (string)$Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
             $autoGruen= (string)$Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
-            $autoRot= (string)$VariationAbfrage->$Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
+            $autoRot= (string)$Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
             $varActive = (string)$Varergebnisse[0]['isActive'];
             echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
             $varabfrageZaehler++;
             $clientzaehler=0;
-            foreach($VariationAbfrage->variationClients as $client){
+            foreach($Varergebnisse[0]['variationClients'] as $client){
               echo 'Client:'.$client;
               $clientzaehler++;
             }
