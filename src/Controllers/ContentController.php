@@ -105,16 +105,16 @@
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
 
-            $VariationAbfrage = $VarRepo->show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
+            $VariationAbfrage = $VarRepo->findById($varID);
             $this
-              ->getLogger("ContentController_show")
+              ->getLogger("ContentController_findById")
               ->setReferenceType('VariationRepositoryContract')
               ->setReferenceValue($varID)
               ->info('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
 
             $varabfrageZaehler=0;
             foreach($VariationAbfrage as $varItem){
-              $beschraenkung= $varItem['stockLimitation'];
+              $beschraenkung= $varItem->stockLimitation];
               $autoSichtbar= $varItem['isAvailableIfNetStockIsPositive'];
               $autoUnsichtbar= $varItem['isAvailableIfNetStockIsNotPositive'];
               $autoGruen= $varItem['isAvailableIfNetStockIsPositive'];
