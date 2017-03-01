@@ -98,8 +98,6 @@
           $ergebnisse = array();
           $zaehler=0;
           foreach($Ergebnis as $item){
-            echo($item['variationBase']['id']);
-            echo '<div> foreach Items'.$zaehler.'</div>';
             $ergebnisse[] = $item;
             // echo($ergebnisse[0]['itemBase']['id']);
             $itemID= $item['itemBase']['id'];
@@ -115,27 +113,23 @@
               ->info('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
 
             $varabfrageZaehler=0;
-            echo($VariationAbfrage->mainWarehouseId);
-            foreach($VariationAbfrage as $varItem){
-              $beschraenkung= $varItem->stockLimitation;
-              $autoSichtbar= $varItem['isAvailableIfNetStockIsPositive'];
-              $autoUnsichtbar= $varItem['isAvailableIfNetStockIsNotPositive'];
-              $autoGruen= $varItem['isAvailableIfNetStockIsPositive'];
-              $autoRot= $varItem['isUnavailableIfNetStockIsNotPositive'];
-              $varActive = $varItem['isActive'];
-              $varClients=$varItem['variationClients'];
-              echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:'.$varClients;
-              echo '<div> foreach Varia-Abfrage'.$varabfrageZaehler.'</div>';
-              $varabfrageZaehler++;
-              $clientzaehler=0;
-              foreach($varItem['variationClients'] as $client){
-                echo 'Client:'.$client;
-                $clientzaehler++;
-              }
+            $myText = (string)$VariationAbfrage['mainWarehouseId'];
+            echo($myText);
 
-              echo '<div>';
+            $beschraenkung= (string)$VariationAbfrage->stockLimitation;
+            $autoSichtbar= (string)$VariationAbfrage['isAvailableIfNetStockIsPositive'];
+            $autoUnsichtbar= (string)$VariationAbfrage['isAvailableIfNetStockIsNotPositive'];
+            $autoGruen= (string)$VariationAbfrage['isAvailableIfNetStockIsPositive'];
+            $autoRot= (string)$VariationAbfrage['isUnavailableIfNetStockIsNotPositive'];
+            $varActive = (string)$VariationAbfrage['isActive'];
+            echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
+            $varabfrageZaehler++;
+            $clientzaehler=0;
+            foreach($varItem['variationClients'] as $client){
+              echo 'Client:'.$client;
+              $clientzaehler++;
             }
-
+            echo '<div>';
             $zaehler++;
           }
 
