@@ -105,13 +105,13 @@
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
 
-            $VariationAbfrage = $VarRepo->findById($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
+            $VariationAbfrage = $VarRepo->show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
             $this
-              ->getLogger("ContentController_findById")
+              ->getLogger("ContentController_show")
               ->setReferenceType('VariationRepositoryContract')
               ->setReferenceValue($varID)
               ->debug('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
-              
+
             $varabfrageZaehler=0;
             foreach($VariationAbfrage as $varItem){
               $beschraenkung= $varItem['stockLimitation'];
