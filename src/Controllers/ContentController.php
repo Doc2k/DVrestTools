@@ -122,7 +122,7 @@
             $autoGruen= (string)$VariationAbfrage->isAvailableIfNetStockIsPositive;
             $autoRot= (string)$VariationAbfrage->isUnavailableIfNetStockIsNotPositive;
             $varActive = (string)$VariationAbfrage->isActive;
-            echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
+            echo '<div>ItemID:'.$VariationAbfrage->id.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
             $varabfrageZaehler++;
             $clientzaehler=0;
             foreach($VariationAbfrage->variationClients as $client){
