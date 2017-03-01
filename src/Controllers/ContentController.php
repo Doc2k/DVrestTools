@@ -117,8 +117,8 @@
             echo($myText);
 
             $beschraenkung= (string)$VariationAbfrage->stockLimitation;
-            $autoSichtbar= (string)$VariationAbfrage->isAvailableIfNetStockIsPositive;
-            $autoUnsichtbar= (string)$VariationAbfrage->isAvailableIfNetStockIsNotPositive;
+            $autoSichtbar= (string)$VariationAbfrage->isVisibleIfNetStockIsPositive;
+            $autoUnsichtbar= (string)$VariationAbfrage->isInvisibleIfNetStockIsNotPositive;
             $autoGruen= (string)$VariationAbfrage->isAvailableIfNetStockIsPositive;
             $autoRot= (string)$VariationAbfrage->isUnavailableIfNetStockIsNotPositive;
             $varActive = (string)$VariationAbfrage->isActive;
