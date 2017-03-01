@@ -102,7 +102,7 @@
             // echo($ergebnisse[0]['itemBase']['id']);
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
-
+            echo 'Erster Call<br /><div>ItemID:'.$itemID.' | VarID:'.$varID.'</div>';
             $with['variationClients'] = true;
             $lang = "de";
             $VariationAbfrage = $VarRepo->show($varID, $with, $lang);
@@ -113,17 +113,16 @@
               ->info('DVrestTools::log.successMessage', $VariationAbfrage);
             $Varergebnisse = array();
             $Varergebnisse[] = $VariationAbfrage;
-            $varabfrageZaehler=0;
             $myText = (string)$Varergebnisse[0]['mainWarehouseId'];
             echo('Lala:'.$myText);
 
-            $beschraenkung= (string)$VariationAbfrage->stockLimitation;
-            $autoSichtbar= (string)$VariationAbfrage->isVisibleIfNetStockIsPositive;
-            $autoUnsichtbar= (string)$VariationAbfrage->isInvisibleIfNetStockIsNotPositive;
-            $autoGruen= (string)$VariationAbfrage->isAvailableIfNetStockIsPositive;
-            $autoRot= (string)$VariationAbfrage->isUnavailableIfNetStockIsNotPositive;
-            $varActive = (string)$VariationAbfrage->isActive;
-            echo '<div>ItemID:'.$VariationAbfrage->id.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
+            $beschraenkung= (string)$Varergebnisse[0]['stockLimitation'];
+            $autoSichtbar= (string)$Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
+            $autoUnsichtbar= (string)$Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
+            $autoGruen= (string)$Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
+            $autoRot= (string)$VariationAbfrage->$Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
+            $varActive = (string)$Varergebnisse[0]['isActive'];
+            echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
             $varabfrageZaehler++;
             $clientzaehler=0;
             foreach($VariationAbfrage->variationClients as $client){
