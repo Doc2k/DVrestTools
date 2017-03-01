@@ -110,7 +110,7 @@
               ->getLogger("ContentController_show")
               ->setReferenceType('VariationRepositoryContract')
               ->setReferenceValue($varID)
-              ->debug('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
+              ->info('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
 
             $varabfrageZaehler=0;
             foreach($VariationAbfrage as $varItem){
