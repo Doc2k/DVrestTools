@@ -7,10 +7,13 @@
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
     use Plenty\Modules\Item\Variation\Contracts\VariationRepositoryContract;
     use Plenty\Modules\Authentication\Contracts\ContactAuthenticationRepositoryContract;
+    use Plenty\Plugin\Log\Loggable;
 
 
 
     class ContentController extends Controller{
+      use Loggable;
+
       // Superglobale GET einbinden
       // ----------------------------------------------------
         public $request;
@@ -102,7 +105,13 @@
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
 
-            $VariationAbfrage = $VarRepo->findById($varID);
+            $VariationAbfrage = $VarRepo->findById($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
+            $this
+              ->getLogger("ContentController_findById")
+              ->setReferenceType('VariationRepositoryContract')
+              ->setReferenceValue($varID)
+              ->debug('DVrestTools::log.successMessage', ['Ergebnis' => $VariationAbfrage]);
+              
             $varabfrageZaehler=0;
             foreach($VariationAbfrage as $varItem){
               $beschraenkung= $varItem['stockLimitation'];
@@ -117,9 +126,10 @@
               $varabfrageZaehler++;
               $clientzaehler=0;
               foreach($varItem['variationClients'] as $client){
-                echo 'Client:'.$client[$clientzaehler];
+                echo 'Client:'.$client;
                 $clientzaehler++;
               }
+
               echo '<div>';
             }
 
