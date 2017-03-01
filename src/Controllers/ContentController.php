@@ -110,7 +110,7 @@
               ->getLogger("ContentController_show")
               ->setReferenceType('VariationRepositoryContract')
               ->setReferenceValue($varID)
-              ->info('DVrestTools::log.successMessage', $VariationAbfrage]);
+              ->info('DVrestTools::log.successMessage', $VariationAbfrage);
 
             $varabfrageZaehler=0;
             $myText = (string)$VariationAbfrage->mainWarehouseId;
