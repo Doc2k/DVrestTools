@@ -114,7 +114,7 @@
 
             $varabfrageZaehler=0;
             foreach($VariationAbfrage as $varItem){
-              $beschraenkung= $varItem->stockLimitation];
+              $beschraenkung= $varItem->stockLimitation;
               $autoSichtbar= $varItem['isAvailableIfNetStockIsPositive'];
               $autoUnsichtbar= $varItem['isAvailableIfNetStockIsNotPositive'];
               $autoGruen= $varItem['isAvailableIfNetStockIsPositive'];
