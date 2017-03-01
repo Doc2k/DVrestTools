@@ -101,7 +101,8 @@
             $ergebnisse[] = $item;
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
-            $erstBeschraenkung= $item['variationBase']['limitOrderByStockSelect'];
+            $beschraenkung= $item['variationBase']['limitOrderByStockSelect'];
+            
             echo 'Erster Call<br /><div>ItemID:'.$itemID.' | VarID:'.$varID.' | Beschränkung:'.$erstBeschraenkung.'</div>';
 
             $with['variationClients'] = true;
@@ -117,13 +118,12 @@
             $Varergebnisse = array();
             $Varergebnisse[] = $VariationAbfrage;
 
-            $beschraenkung= (string)$Varergebnisse[0]['stockLimitation'];
             $autoSichtbar= (string)$Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
             $autoUnsichtbar= (string)$Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
             $autoGruen= (string)$Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
             $autoRot= (string)$Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
             $varActive = (string)$Varergebnisse[0]['isActive'];
-            echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:';
+            echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | AutoUnsichtbar:'.$autoUnsichtbar;
 
             $istaktuellSichtbar='nein';
             foreach($Varergebnisse[0]['variationClients'] as $client){
