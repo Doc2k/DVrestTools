@@ -110,6 +110,7 @@
               $autoRot= $varItem['isUnavailableIfNetStockIsNotPositive'];
               $varActive = $varItem['isActive'];
               echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
+              echo '<div>'.$zaehler.'</div>';
               $clientzaehler=0;
               foreach($varItem['variationClients'] as $client){
                 echo 'Client:'.$client[$clientzaehler];
