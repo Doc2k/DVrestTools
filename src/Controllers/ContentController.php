@@ -102,7 +102,7 @@
             $itemID= $item['itemBase']['id'];
             $varID= $item['variationBase']['id'];
 
-            $VariationAbfrage = $VarRepo->show($varID, ['isActive', 'stockLimitation', 'isVisibleIfNetStockIsPositive', 'isInvisibleIfNetStockIsNotPositive', 'isAvailableIfNetStockIsPositive', 'isUnavailableIfNetStockIsNotPositive', 'variationClients'], 'de');
+            $VariationAbfrage = $VarRepo->findById($varID);
             $varabfrageZaehler=0;
             foreach($VariationAbfrage as $varItem){
               $beschraenkung= $varItem['stockLimitation'];
@@ -112,7 +112,7 @@
               $autoRot= $varItem['isUnavailableIfNetStockIsNotPositive'];
               $varActive = $varItem['isActive'];
               $varClients=$varItem['variationClients'];
-              echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | ';
+              echo '<div>ItemID:'.$itemID.' | VarID:'.$varID.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | Clients:'.$varClients;
               echo '<div> foreach Varia-Abfrage'.$varabfrageZaehler.'</div>';
               $varabfrageZaehler++;
               $clientzaehler=0;
