@@ -1,37 +1,52 @@
-{% if inhalte is not null %}
-  <table>
-    <tr>
-      <th>
-        Name
-      </th>
-      <th>
-        ItemID
-      </th>
-      <th>
-        VarID
-      </th>
-      <th>
-        WB Netto
-      </th>
-    </tr>
-  {% for item in inhalte %}
-    <tr>
-      <td>
-        {{ item.itemDescription.name1 }}
-      </td>
-      <td>
-        {{ item.itemBase.itemId }}
-      </td>
-      <td>
-        {{ item.variationBase.id }}
-      </td>
-      <td>
-        {{ item.variationStock.stockNet }}
-      </td>
-    </tr>
-    {% flush %}
-  {% endfor %}
-  </table>
-{% else %}
-        Nanü
-{% endif %}
+{% extends "base.html" %}
+
+{% block head %}
+  <title>Sichtbarkeiten und Bestandsbindungen {{ domain }}</title>
+{% endblock %}
+{% block PageBody %}
+  {% if inhalte is not null %}
+    <div id="Kopfspalte">
+      <h1>Sichtbarkeiten und Bestandsbindungen</h1>
+      <table cellspaching="0" cellpadding="5">
+        <tr>
+          <th>
+            Name
+          </th>
+          <th>
+            ItemID
+          </th>
+          <th>
+            VarID
+          </th>
+          <th>
+            WB Netto
+          </th>
+        </tr>
+      </table>
+    </div>
+    <table cellspaching="0" cellpadding="5">
+      {% for item in inhalte %}
+        <tr>
+          <td>
+            {{ item.itemDescription.name1 }}
+          </td>
+          <td>
+            {{ item.itemBase.id }}
+          </td>
+          <td>
+            {{ item.variationBase.id }}
+          </td>
+          <td>
+            {{ item.variationStock.stockNet }}
+          </td>
+        </tr>
+        {% flush %}
+      {% endfor %}
+    </table>
+  {% else %}
+    <div id="Kopfspalte">
+      <h1>Sichtbarkeiten und Bestandsbindungen</h1>
+      Keine Items übermittelt!
+    </div>
+  {% endif %}
+{% endblock %}

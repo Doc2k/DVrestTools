@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
     <head>
-        <title>DV-Rest-Tools</title>
+      <script src="{{ plugin_path('DVrestTools') }}/js/jquery-3.1.1.min.js"></script>
+      <link rel="stylesheet" type="text/css" href="{{ plugin_path('DVrestTools') }}/css/base.css" />
+      <link rel="shortcut icon" href="{{ plugin_path('DVrestTools') }}/img/dv.ico" type="image/x-icon" />
+      <link rel="icon" href="{{ plugin_path('DVrestTools') }}/img/dv.ico" type="image/x-icon" />
+      {% block head %}
+      {% endblock %}
     </head>
     <body>
         <div id="page-body">
