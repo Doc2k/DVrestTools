@@ -11,7 +11,7 @@
       <div class="cont top">
         <table cellspaching="0" cellpadding="5">
           <tr>
-            <th>
+            <th class="itemName">
               Name
             </th>
             <th class="id">
@@ -21,8 +21,13 @@
               VarID
             </th>
             <th class="stock">
-              <span class="icon-box"></span>
               WB Netto
+            </th>
+            <th class="justIcon visibility">
+              <span class="icon-eye"></span>
+            </th>
+            <th class="justIcon stockBinding">
+              <span class="icon-box"></span>
             </th>
           </tr>
         </table>
@@ -43,6 +48,20 @@
             </td>
             <td class="stock">
               {{ item.variationStock.stockNet }}
+            </td>
+            <td class="justIcon visibility">
+              {% if(item.variationBase.isVisibleInClient=="ja") %}
+                <span class="icon-eye"></span>
+              {% else %}
+                <span class="icon-eye-off"></span>
+              {% endif %}
+            </td>
+            <td class="justIcon stockBinding">
+              {% if(item.variationBase.stockLimitation > 0) %}
+                <span class="icon-lock"></span>
+              {% else %}
+                <span class="icon-lock-open"></span>
+              {% endif %}
             </td>
           </tr>
         {% endfor %}
