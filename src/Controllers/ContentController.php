@@ -133,14 +133,13 @@
                 /* ---------------------------------------------------- */
                   $ergebnisse[$itemCount] = $item;
                   $itemID= $item['itemBase']['id'];
-
+                  $varID= $item['variationBase']['id'];
                 /* ---------------------------------------------------- */
 
                 /* Zweiten Call mit den sichtbaren Clients durchfuehren ($with) */
                 /* ---------------------------------------------------- */
-                  $lang = "de";
                   $with['variationClients'] = true;
-                  $VariationAbfrage = $VarRepo->show($varID, $with, $lang);
+                  $VariationAbfrage = $VarRepo->show($varID, $with, "de");
                 /* ---------------------------------------------------- */
 
 
