@@ -82,7 +82,7 @@
 
       /* Get Visibilities */
       /* ############################################################################################################ */
-        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo, ContactAuthenticationRepositoryContract $authRepo){
+        public function getVisibilities(Twig $twig, ItemDataLayerRepositoryContract $repo, VariationRepositoryContract $VarRepo){
 
           /* Fuer spaeteren vergleich (In diesem Shop sichtbar) */
           /* ---------------------------------------------------- */
