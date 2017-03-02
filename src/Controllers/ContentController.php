@@ -197,7 +197,7 @@
           /* ============================================================================ */
           /* ENDE -> Erster Call (DataLayerRepo) */
 
-          $myData= ['inhalte' => $ergebnisse;
+          $myData= ['inhalte' => $ergebnisse];
           return $twig->render('DVrestTools::content.getVisibilities', $myData);
         }
       /* ############################################################################################################ */
