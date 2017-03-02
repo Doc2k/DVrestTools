@@ -14,13 +14,14 @@
             <th>
               Name
             </th>
-            <th>
+            <th class="id">
               ItemID
             </th>
-            <th>
+            <th class="id">
               VarID
             </th>
-            <th>
+            <th class="stock">
+              <span class="icon-box"></span>
               WB Netto
             </th>
           </tr>
@@ -31,16 +32,16 @@
       <table cellspaching="0" cellpadding="5">
         {% for item in inhalte %}
           <tr>
-            <td>
-              {{ item.itemDescription.name1 }}
+            <td class="itemName">
+              {{ item.itemDescription.name1 }} {{ item.variationBase.variationName }}
             </td>
-            <td>
+            <td class="id">
               {{ item.itemBase.id }}
             </td>
-            <td>
+            <td class="id">
               {{ item.variationBase.id }}
             </td>
-            <td>
+            <td class="stock">
               {{ item.variationStock.stockNet }}
             </td>
           </tr>
