@@ -174,8 +174,6 @@
                       }
 
                       $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
-
-                      echo($ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive']);
                     /* ---------------------------------------------------- */
 
                     /* $ergebnisse loggen (Datentausch -> Log) */
