@@ -148,13 +148,7 @@
                     $Varergebnisse = array();
                     $Varergebnisse[] = $VariationAbfrage;
 
-                    $ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive'] = $Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isInvisibleIfNetStockIsNotPositive'] = $Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isAvailableIfNetStockIsPositive'] = $Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isUnavailableIfNetStockIsNotPositive'] = $Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isActive'] = $Varergebnisse[0]['isActive'];
-                    $ergebnisse[$itemCount]['variationBase']['stockLimitation'] = $Varergebnisse[0]['stockLimitation'];
-                    $ergebnisse[$itemCount]['variationBase']['mainWarehouseId'] = $Varergebnisse[0]['mainWarehouseId'];
+                    
 
                     /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
                     /* ---------------------------------------------------- */
