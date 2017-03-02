@@ -138,8 +138,9 @@
 
                 /* Zweiten Call mit den sichtbaren Clients durchfuehren ($with) */
                 /* ---------------------------------------------------- */
+                  $lang = "de";
                   $with['variationClients'] = true;
-                  $VariationAbfrage = $VarRepo->show($varID, $with, "de");
+                  $VariationAbfrage = $VarRepo->show($varID, $with, $lang);
                 /* ---------------------------------------------------- */
 
 
