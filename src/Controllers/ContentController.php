@@ -148,7 +148,7 @@
                     $Varergebnisse = array();
                     $Varergebnisse[] = $VariationAbfrage;
 
-
+                    
 
                     /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
                     /* ---------------------------------------------------- */
@@ -158,6 +158,7 @@
                           $istaktuellSichtbar='ja';
                         }
                       }
+                      $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
                     /* ---------------------------------------------------- */
 
                     /* Ergebnis von zweitem Call loggen (Datentausch -> Log) */
