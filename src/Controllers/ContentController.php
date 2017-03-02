@@ -91,7 +91,7 @@
 
           /* $ergebnisse wird spaeter an Twig uebergeben */
           /* ---------------------------------------------------- */
-            $ergebnisse = array();
+            $ergebnisse = [];
           /* ---------------------------------------------------- */
 
           /* Erster Call (DataLayerRepo) */
@@ -131,7 +131,15 @@
 
                 /* Werte aus erstem Call in $ergebnisse einfuegen */
                 /* ---------------------------------------------------- */
-                  $ergebnisse[$itemCount] = $item;
+                  $ergebnisse[$itemCount]['itemBase']['id'] = $item['itemBase']['id'];
+                  $ergebnisse[$itemCount]['itemDescription']['name1'] = $item['itemDescription']['name1'];
+                  $ergebnisse[$itemCount]['variationBase']['id'] = $item['variationBase']['id'];
+                  $ergebnisse[$itemCount]['variationBase']['variationName'] = $item['variationBase']['variationName'];
+                  $ergebnisse[$itemCount]['variationStock']['stockNet'] = $item['variationStock']['stockNet'];
+                /* ---------------------------------------------------- */
+
+                /* ---------------------------------------------------- */
+                /* ---------------------------------------------------- */
                   $itemID= $item['itemBase']['id'];
                   $varID= $item['variationBase']['id'];
                 /* ---------------------------------------------------- */
@@ -147,7 +155,7 @@
                 /* ============================================================================ */
                     $Varergebnisse = array();
                     $Varergebnisse[] = $VariationAbfrage;
-/*
+
                     $ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive'] = $Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
                     $ergebnisse[$itemCount]['variationBase']['isInvisibleIfNetStockIsNotPositive'] = $Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
                     $ergebnisse[$itemCount]['variationBase']['isAvailableIfNetStockIsPositive'] = $Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
@@ -155,7 +163,6 @@
                     $ergebnisse[$itemCount]['variationBase']['isActive'] = $Varergebnisse[0]['isActive'];
                     $ergebnisse[$itemCount]['variationBase']['stockLimitation'] = $Varergebnisse[0]['stockLimitation'];
                     $ergebnisse[$itemCount]['variationBase']['mainWarehouseId'] = $Varergebnisse[0]['mainWarehouseId'];
-                    */
 
                     /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
                     /* ---------------------------------------------------- */
@@ -165,10 +172,10 @@
                           $istaktuellSichtbar='ja';
                         }
                       }
-                      $testarray=[];
-                      $testarray[$itemCount]['variationBase']['isVisibleInClient'] = 'lala';
 
-                      echo($ergebnisse[$itemCount]['variationBase']['id']);
+                      $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
+
+                      echo($ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive']);
                     /* ---------------------------------------------------- */
 
                     /* Ergebnis von zweitem Call loggen (Datentausch -> Log) */
