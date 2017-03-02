@@ -139,7 +139,7 @@
                 /* Zweiten Call mit den sichtbaren Clients durchfuehren ($with) */
                 /* ---------------------------------------------------- */
                   $with['variationClients'] = true;
-                  $VariationAbfrage = $VarRepo->show($varID, $with, "DE");
+                  $VariationAbfrage = $VarRepo->show($varID, $with, "de");
                 /* ---------------------------------------------------- */
 
                 /* Ergebnis von zweitem Call loggen (Datentausch -> Log) */
@@ -160,6 +160,7 @@
                     $autoGruen= (string)$Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
                     $autoRot= (string)$Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
                     $varActive = (string)$Varergebnisse[0]['isActive'];
+                    $varBeschraenkt = (string)$Varergebnisse[0]['stockLimitation'];
 
                     /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
                     /* ---------------------------------------------------- */
@@ -176,12 +177,15 @@
 
                 /* Interpaetation der geammelten Werte */
                 /* ============================================================================ */
+                  $itemAusgeben='nein';
+
+                  
 
                 /* ============================================================================ */
                 /* ENDE -> Interpaetation der geammelten Werte */
 
 
-                echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | ItemName:'.$varID.' | VarName:'.$varName.' | Aktiv:'.$varActive.' | Beschränkung:'.$beschraenkung.' | AutoSichtbar:'.$autoSichtbar.' | AutoUnsichtbar:'.$autoUnsichtbar.'| Aktuell sichtbar:'.$istaktuellSichtbar.'</div>';
+                echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | ItemName:'.$varID.' | VarName:'.$varName.' | Aktiv:'.$varActive.' | Beschränkung:'.$varBeschraenkt.' | AutoSichtbar:'.$autoSichtbar.' | AutoUnsichtbar:'.$autoUnsichtbar.'| Aktuell sichtbar:'.$istaktuellSichtbar.'</div>';
               }
             /* ============================================================================ */
             /* ENDE -> Ergebnis von erstem Call in Schleife durchlaufen */
