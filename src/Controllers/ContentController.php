@@ -196,9 +196,8 @@
 
           /* ============================================================================ */
           /* ENDE -> Erster Call (DataLayerRepo) */
-          $headers = apache_request_headers();
-          $domainName= ['Host'];
-          $myData= ['inhalte' => $ergebnisse, 'domain' => $domainName];
+
+          $myData= ['inhalte' => $ergebnisse;
           return $twig->render('DVrestTools::content.getVisibilities', $myData);
         }
       /* ############################################################################################################ */
