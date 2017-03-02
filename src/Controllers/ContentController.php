@@ -124,16 +124,16 @@
 
             /* Ergebnis von erstem Call in Schleife durchlaufen */
             /* ============================================================================ */
+
+              $itemCount=0;
+
               foreach($Ergebnis as $item){
 
-                /* Werte aus erstem Call in Vars uebernehmen */
+                /* Werte aus erstem Call in $ergebnisse einfuegen */
                 /* ---------------------------------------------------- */
-                  $ergebnisse[] = $item;
+                  $ergebnisse[$itemCount] = $item;
                   $itemID= $item['itemBase']['id'];
-                  $varID= $item['variationBase']['id'];
-                  $varName= $item['variationBase']['variationName'];
-                  $itemName= $item['itemDescription']['name1'];
-                  $itemNettoStock= $item['variationStock']['stockNet'];
+
                 /* ---------------------------------------------------- */
 
                 /* Zweiten Call mit den sichtbaren Clients durchfuehren ($with) */
@@ -142,25 +142,19 @@
                   $VariationAbfrage = $VarRepo->show($varID, $with, "de");
                 /* ---------------------------------------------------- */
 
-                /* Ergebnis von zweitem Call loggen (Datentausch -> Log) */
-                /* ---------------------------------------------------- */
-                  $this
-                    ->getLogger("ContentController_show")
-                    ->setReferenceType('VariationRepositoryContract')
-                    ->setReferenceValue($varID)
-                    ->info('DVrestTools::log.successMessage', $VariationAbfrage);
-                /* ---------------------------------------------------- */
 
-                /* Werte aus 2tem Call in Vars uebernehmen*/
+                /* Werte aus 2tem Call in $ergebnisse uebernehmen */
                 /* ============================================================================ */
                     $Varergebnisse = array();
                     $Varergebnisse[] = $VariationAbfrage;
-                    $autoSichtbar= (string)$Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
-                    $autoUnsichtbar= (string)$Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
-                    $autoGruen= (string)$Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
-                    $autoRot= (string)$Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
-                    $varActive = (string)$Varergebnisse[0]['isActive'];
-                    $varBeschraenkt = (string)$Varergebnisse[0]['stockLimitation'];
+
+                    $ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive'] = $Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
+                    $ergebnisse[$itemCount]['variationBase']['isInvisibleIfNetStockIsNotPositive'] = $Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
+                    $ergebnisse[$itemCount]['variationBase']['isAvailableIfNetStockIsPositive'] = $Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
+                    $ergebnisse[$itemCount]['variationBase']['isUnavailableIfNetStockIsNotPositive'] = $Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
+                    $ergebnisse[$itemCount]['variationBase']['isActive'] = $Varergebnisse[0]['isActive'];
+                    $ergebnisse[$itemCount]['variationBase']['stockLimitation'] = $Varergebnisse[0]['stockLimitation'];
+                    $ergebnisse[$itemCount]['variationBase']['mainWarehouseId'] = $Varergebnisse[0]['mainWarehouseId'];
 
                     /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
                     /* ---------------------------------------------------- */
@@ -170,22 +164,21 @@
                           $istaktuellSichtbar='ja';
                         }
                       }
+                      $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
+                    /* ---------------------------------------------------- */
+
+                    /* Ergebnis von zweitem Call loggen (Datentausch -> Log) */
+                    /* ---------------------------------------------------- */
+                      $this
+                        ->getLogger("ContentController_show")
+                        ->setReferenceType('VariationRepositoryContract')
+                        ->setReferenceValue($varID)
+                        ->info('DVrestTools::log.successMessage', $ergebnisse);
                     /* ---------------------------------------------------- */
 
                 /* ============================================================================ */
                 /* ENDE -> Werte aus 2tem Call in Vars uebernehmen*/
-
-                /* Interpaetation der geammelten Werte */
-                /* ============================================================================ */
-                  $itemAusgeben='nein';
-
-                  
-
-                /* ============================================================================ */
-                /* ENDE -> Interpaetation der geammelten Werte */
-
-
-                echo '<div>ZweiterCall<br />ItemID:'.$itemID.' | VarID:'.$varID.' | ItemName:'.$varID.' | VarName:'.$varName.' | Aktiv:'.$varActive.' | Beschränkung:'.$varBeschraenkt.' | AutoSichtbar:'.$autoSichtbar.' | AutoUnsichtbar:'.$autoUnsichtbar.'| Aktuell sichtbar:'.$istaktuellSichtbar.'</div>';
+                $itemCount++;
               }
             /* ============================================================================ */
             /* ENDE -> Ergebnis von erstem Call in Schleife durchlaufen */
