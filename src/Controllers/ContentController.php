@@ -165,7 +165,8 @@
                           $istaktuellSichtbar='ja';
                         }
                       }
-                      // $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
+                      $testarray=[];
+                      $testarray[$itemCount]['variationBase']['isVisibleInClient'] = 'lala';
 
                       echo($ergebnisse[$itemCount]['variationBase']['id']);
                     /* ---------------------------------------------------- */
