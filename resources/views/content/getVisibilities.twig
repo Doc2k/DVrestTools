@@ -8,42 +8,45 @@
   {% if inhalte is not null %}
     <div id="Kopfspalte">
       <h1>Sichtbarkeiten und Bestandsbindungen</h1>
+      <div class="cont top">
+        <table cellspaching="0" cellpadding="5">
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              ItemID
+            </th>
+            <th>
+              VarID
+            </th>
+            <th>
+              WB Netto
+            </th>
+          </tr>
+        </table>
+    </div>
+    </div>
+    <div class="cont bottom">
       <table cellspaching="0" cellpadding="5">
-        <tr>
-          <th>
-            Name
-          </th>
-          <th>
-            ItemID
-          </th>
-          <th>
-            VarID
-          </th>
-          <th>
-            WB Netto
-          </th>
-        </tr>
+        {% for item in inhalte %}
+          <tr>
+            <td>
+              {{ item.itemDescription.name1 }}
+            </td>
+            <td>
+              {{ item.itemBase.id }}
+            </td>
+            <td>
+              {{ item.variationBase.id }}
+            </td>
+            <td>
+              {{ item.variationStock.stockNet }}
+            </td>
+          </tr>
+        {% endfor %}
       </table>
     </div>
-    <table cellspaching="0" cellpadding="5">
-      {% for item in inhalte %}
-        <tr>
-          <td>
-            {{ item.itemDescription.name1 }}
-          </td>
-          <td>
-            {{ item.itemBase.id }}
-          </td>
-          <td>
-            {{ item.variationBase.id }}
-          </td>
-          <td>
-            {{ item.variationStock.stockNet }}
-          </td>
-        </tr>
-        {% flush %}
-      {% endfor %}
-    </table>
   {% else %}
     <div id="Kopfspalte">
       <h1>Sichtbarkeiten und Bestandsbindungen</h1>
