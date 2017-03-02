@@ -1,6 +1,6 @@
 *{font-family:Verdana, Geneva, sans-serif; padding:0; margin:0; outline:none;box-sizing: border-box; }
 html{background:#0E72B5; width:100%; height:100%;}
-body{background:url(../img/dv_web2.png) no-repeat center 70px; width:100%; height:95%; background-size:auto 70%; }
+body{background:url(img/dv_web2.png) no-repeat center 70px; width:100%; height:95%; background-size:auto 70%; padding-top:100px;}
 table{border-collapse: collapse;}
 .clear{clear:both;}
 #Kopfspalte{position:fixed; height:100px;}
