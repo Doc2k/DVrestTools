@@ -5,7 +5,7 @@ body{background:url(/layout/4Plugins/img/dv_web2.png) no-repeat center 70px; wid
 .clear{clear:both;}
 #Kopfspalte{position:fixed;height:100px;top:0;left: 0;right: 0;}
 h1{display:block;margin:10px;text-align:center;font-size:20px;color:#fff;text-shadow: 1px 1px 1px #333;}
-.cont{background: rgba(255,255,255,0.8); padding:10px; border: 2px solid #1C6596;margin: 10px 0.5% 40px 0.5%;box-shadow: 0px 2px 10px -1px rgba(255,255,255,0.62);}
+.cont{background: rgba(255,255,255,0.8); padding:10px; border: 2px solid #1C6596;margin: 10px 0.5% 40px 0.5%;box-shadow: 0px 2px 10px -1px rgba(255,255,255,0.62); width:100%; max-width:980px; margin:0 auto;}
 .cont.top{border-radius:5px 5px 0 0;}
 .cont.bottom{border-radius:0 0 5px 5px;}
 table{border-collapse: collapse;}
