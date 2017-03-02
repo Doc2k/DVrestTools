@@ -178,7 +178,7 @@
                       echo($ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive']);
                     /* ---------------------------------------------------- */
 
-                    /* Ergebnis von zweitem Call loggen (Datentausch -> Log) */
+                    /* $ergebnisse loggen (Datentausch -> Log) */
                     /* ---------------------------------------------------- */
                       $this
                         ->getLogger("ContentController_show")
@@ -197,6 +197,8 @@
           /* ============================================================================ */
           /* ENDE -> Erster Call (DataLayerRepo) */
 
+          $myData= ['inhalte' => $ergebnisse];
+          return $twig->render('DVrestTools::content.getVisibilities', $myData);
         }
       /* ############################################################################################################ */
       /* ENDE -> Get Visibilities */
