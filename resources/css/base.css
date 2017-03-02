@@ -1,12 +1,6 @@
 *{font-family:Verdana, Geneva, sans-serif; padding:0; margin:0; outline:none;box-sizing: border-box; }
 html{background:#0E72B5; width:100%; height:100%;}
 body{background:url(../img/dv_web2.png) no-repeat center 70px; width:100%; height:95%; background-size:auto 70%; }
-#Console{position:relative;margin-bottom:40px;}
-#consoleInner{font-size:13px;}
-.ichblinke{display:inline-block;width: 6px;height: 16px;margin-bottom: -3px; background:#fff;}
-.blinking{animation: blink-animation 1s steps(5, start) infinite;-webkit-animation: blink-animation 1s steps(5, start) infinite;font-size:15px}
-#consoleStatus{display:inline-block; color:#fff; font-size:17px;text-shadow:1px 1px 1px #333; margin-top:10px; margin-left:10px;}
-#consoleStatus .error{display:inline-block; padding:3px 6px; color:#fff; border-radius:4px;}
+table{border-collapse: collapse;}
 .clear{clear:both;}
-@keyframes blink-animation{to{visibility: hidden;}}
-@-webkit-keyframes blink-animation{to{visibility: hidden;}}
+#Kopfspalte{position:fixed; height:100px;}
