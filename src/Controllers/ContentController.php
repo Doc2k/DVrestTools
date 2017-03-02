@@ -139,7 +139,7 @@
                 /* Zweiten Call mit den sichtbaren Clients durchfuehren ($with) */
                 /* ---------------------------------------------------- */
                   $with['variationClients'] = true;
-                  $VariationAbfrage = $VarRepo->show($varID, $with, "de");
+                  $VariationAbfrage = $VarRepo->show($varID, $with, "DE");
                 /* ---------------------------------------------------- */
 
                 /* Ergebnis von zweitem Call loggen (Datentausch -> Log) */
