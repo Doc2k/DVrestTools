@@ -3,7 +3,7 @@
 {% block head %}
   <title>Sichtbarkeiten und Bestandsbindungen</title>
   <script>
-    jQuery(document).ready(function(){jQuery('title, h1').append(' '+document.domain)});
+    jQuery(document).ready(function(){jQuery('title, h1').append('<br />'+document.domain)});
   </script>
 {% endblock %}
 
@@ -91,37 +91,37 @@
                 </td>
                 <td class="justIcon stockBinding">
                   {% if(item.variationBase.stockLimitation > 0) %}
-                    <span class="icon-lock"></span>
+                    <span class="icon-lock{% if (itemNettoStock<1) %} error{% endif %}"></span>
                   {% else %}
-                    <span class="icon-lock-open"></span>
+                    <span class="icon-lock-open{% if (itemNettoStock>0) %} error{% endif %}"></span>
                   {% endif %}
                 </td>
                 <td class="justIcon stockautoVisible">
                   {% if (item.variationBase.isVisibleIfNetStockIsPositive ==true) %}
                     <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
                   {% else %}
-                    <span class="nixDrin"></span>
+                    <span class="nixDrin{% if (itemNettoStock>0) %} error{% endif %}"></span>
                   {% endif %}
                 </td>
                 <td class="justIcon stockautoInvisible">
                   {% if (item.variationBase.isInvisibleIfNetStockIsNotPositive ==true) %}
                     <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
                   {% else %}
-                    <span class="nixDrin"></span>
+                    <span class="nixDrin{% if (itemNettoStock>0) %} error{% endif %}"></span>
                   {% endif %}
                 </td>
                 <td class="justIcon stockautoAvailable">
                   {% if (item.variationBase.isAvailableIfNetStockIsPositive ==true) %}
                     <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
                   {% else %}
-                    <span class="nixDrin"></span>
+                    <span class="nixDrin{% if (itemNettoStock>0) %} error{% endif %}"></span>
                   {% endif %}
                 </td>
                 <td class="justIcon stockautoUnavailable">
                   {% if (item.variationBase.isUnavailableIfNetStockIsNotPositive ==true) %}
                     <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
                   {% else %}
-                    <span class="nixDrin"></span>
+                    <span class="nixDrin{% if (itemNettoStock>0) %} error{% endif %}"></span>
                   {% endif %}
                 </td>
               </tr>
