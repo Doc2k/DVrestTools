@@ -4,7 +4,6 @@
   <title>Sichtbarkeiten und Bestandsbindungen</title>
   <script>
     jQuery(document).ready(function(){jQuery('title, h1').append(' '+document.domain)});
-    alert(document.domain);
   </script>
 {% endblock %}
 
@@ -31,7 +30,19 @@
               <span class="icon-eye"></span>
             </th>
             <th class="justIcon stockBinding">
-              <span class="icon-box"></span>
+              <span class="icon-box"></span><span class="icon-lock"></span>
+            </th>
+            <th class="justIcon stockautoVisible">
+              A <span class="icon-eye"></span>
+            </th>
+            <th class="justIcon stockautoInvisible">
+              A <span class="icon-eye-off"></span>
+            </th>
+            <th class="justIcon stockautoAvailable">
+              A <span class="avail_1 icon-box"></span>
+            </th>
+            <th class="justIcon stockautoUnavailable">
+              A <span class="avail_1 icon-box"></span>
             </th>
           </tr>
         </table>
@@ -41,6 +52,17 @@
       <table cellspaching="0" cellpadding="5">
         {% for item in inhalte %}
           {% if(item.variationBase.isActive==true) %}
+
+            {% set itemNettoStock = item.variationStock.stockNet %}
+            {% if
+              (
+                (itemNettoStock<1 and item.variationBase.stockLimitation > 0)
+                or
+                (itemNettoStock>0 and item.variationBase.stockLimitation = 0)
+              )
+            %}
+              Lalabla
+            {% endif %}
             <tr>
               <td class="itemName">
                 <a href="#" class="icon-right-big"></a>
@@ -52,8 +74,8 @@
               <td class="id">
                 {{ item.variationBase.id }}
               </td>
-              <td class="stock">
-                {{ item.variationStock.stockNet }}
+              <td class="stock"{% if(itemNettoStock<0) %}{{' error'}}{% endif %}>
+                {{ itemNettoStock }}
               </td>
               <td class="justIcon visibility">
                 {% if(item.variationBase.isVisibleInClient=="ja") %}
@@ -68,6 +90,22 @@
                 {% else %}
                   <span class="icon-lock-open"></span>
                 {% endif %}
+              </td>
+              <td class="justIcon stockautoVisible">
+                {% if(item.variationBase.isVisibleIfNetStockIsPositive) ==true %}
+
+                {% else %}
+
+                {% endif %}
+              </td>
+              <td class="justIcon stockautoInvisible">
+
+              </td>
+              <td class="justIcon stockautoAvailable">
+
+              </td>
+              <td class="justIcon stockautoUnavailable">
+
               </td>
             </tr>
           {% endif %}
