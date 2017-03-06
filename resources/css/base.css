@@ -55,5 +55,5 @@ tr{transition:all 300ms;}
 tr:nth-child(2n+0){background:rgba(8,80,128,0.1);}
 tr:hover{background:#ccc;}
 td, th{border:1px solid #333; padding:2px 5px; text-align:left;}
-td.itemName{width:30%;}
-td.justIcon{text-align:center; width:5%;}
+td.itemName, th.itemName{width:30%;}
+td.justIcon, th.justIcon{text-align:center; width:5%;}
