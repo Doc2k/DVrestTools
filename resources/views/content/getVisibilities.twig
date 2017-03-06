@@ -33,16 +33,16 @@
               <span class="icon-box"></span><span class="icon-lock"></span>
             </th>
             <th class="justIcon stockautoVisible">
-              A <span class="icon-eye"></span>
+              A-<span class="icon-eye" style="color:green"></span>
             </th>
             <th class="justIcon stockautoInvisible">
-              A <span class="icon-eye-off"></span>
+              A-<span class="icon-eye-off"></span>
             </th>
             <th class="justIcon stockautoAvailable">
-              A <span class="avail_1 icon-box"></span>
+              A-<span class="avail_1 icon-box"></span>
             </th>
             <th class="justIcon stockautoUnavailable">
-              A <span class="avail_1 icon-box"></span>
+              A-<span class="avail_1 icon-box"></span>
             </th>
           </tr>
         </table>
@@ -54,55 +54,66 @@
           {% if(item.variationBase.isActive==true) %}
 
             {% set itemNettoStock = item.variationStock.stockNet %}
+            {% set mussraus = 'nein' %}
 
-            {% if (itemNettoStock<1 and item.variationBase.stockLimitation ==true) or (itemNettoStock>0 and item.variationBase.stockLimitation !=true) %}
-              Lalabla
+            {% if (itemNettoStock<1 and item.variationBase.stockLimitation ==true)%}
+              {% set mussraus = 'ja' %}
+            {% elseif (itemNettoStock>0 and item.variationBase.stockLimitation !=true) %}
+              {% set mussraus = 'ja' %}
+            {% elseif (itemNettoStock<1 and item.variationBase.isVisibleIfNetStockIsPositive ==true) %}
+                {% set mussraus = 'ja' %}
+            {% elseif (itemNettoStock>0 and item.variationBase.isVisibleIfNetStockIsPositive !=true) %}
+                {% set mussraus = 'ja' %}
             {% endif %}
-            <tr>
-              <td class="itemName">
-                <a href="#" class="icon-right-big"></a>
-                {{ item.itemDescription.name1 }} {{ item.variationBase.variationName }}
-              </td>
-              <td class="id">
-                {{ item.itemBase.id }}
-              </td>
-              <td class="id">
-                {{ item.variationBase.id }}
-              </td>
-              <td class="stock"{% if(itemNettoStock<0) %}{{' error'}}{% endif %}>
-                {{ itemNettoStock }}
-              </td>
-              <td class="justIcon visibility">
-                {% if(item.variationBase.isVisibleInClient=="ja") %}
-                  <span class="icon-eye"></span>
-                {% else %}
-                  <span class="icon-eye-off"></span>
-                {% endif %}
-              </td>
-              <td class="justIcon stockBinding">
-                {% if(item.variationBase.stockLimitation > 0) %}
-                  <span class="icon-lock"></span>
-                {% else %}
-                  <span class="icon-lock-open"></span>
-                {% endif %}
-              </td>
-              <td class="justIcon stockautoVisible">
-                {% if(item.variationBase.isVisibleIfNetStockIsPositive) ==true %}
-                  <span class="icon-ok"></span>
-                {% else %}
-                  <span class="nixDrin"></span>
-                {% endif %}
-              </td>
-              <td class="justIcon stockautoInvisible">
 
-              </td>
-              <td class="justIcon stockautoAvailable">
 
-              </td>
-              <td class="justIcon stockautoUnavailable">
+            {% if mussraus == 'ja' %}
+              <tr>
+                <td class="itemName">
+                  <a href="#" class="icon-right-big"></a>
+                  {{ item.itemDescription.name1 }} {{ item.variationBase.variationName }}
+                </td>
+                <td class="id">
+                  {{ item.itemBase.id }}
+                </td>
+                <td class="id">
+                  {{ item.variationBase.id }}
+                </td>
+                <td class="stock"{% if(itemNettoStock<0) %}{{' error'}}{% endif %}>
+                  {{ itemNettoStock }}
+                </td>
+                <td class="justIcon visibility">
+                  {% if(item.variationBase.isVisibleInClient=="ja") %}
+                    <span class="icon-eye"></span>
+                  {% else %}
+                    <span class="icon-eye-off"></span>
+                  {% endif %}
+                </td>
+                <td class="justIcon stockBinding">
+                  {% if(item.variationBase.stockLimitation > 0) %}
+                    <span class="icon-lock"></span>
+                  {% else %}
+                    <span class="icon-lock-open"></span>
+                  {% endif %}
+                </td>
+                <td class="justIcon stockautoVisible">
+                  {% if (item.variationBase.isVisibleIfNetStockIsPositive ==true) %}
+                    <span class="icon-ok{% if (itemNettoStock<1 %} error{% endif %}"></span>
+                  {% else %}
+                    <span class="nixDrin"></span>
+                  {% endif %}
+                </td>
+                <td class="justIcon stockautoInvisible">
 
-              </td>
-            </tr>
+                </td>
+                <td class="justIcon stockautoAvailable">
+
+                </td>
+                <td class="justIcon stockautoUnavailable">
+
+                </td>
+              </tr>
+            {% endif %}
           {% endif %}
         {% endfor %}
       </table>
