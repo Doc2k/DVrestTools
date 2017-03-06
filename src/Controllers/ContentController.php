@@ -109,7 +109,7 @@
 
             /* Filter auf ItemId fuer ersten Call (muss spaeter weg) */
             /* ---------------------------------------------------- */
-              $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
+              $itemFilter = [];
             /* ---------------------------------------------------- */
 
             /* Parameter fuer ersten Call (Einschraenkung auf Lager) */
