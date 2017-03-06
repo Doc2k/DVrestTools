@@ -50,6 +50,7 @@
     </div>
     <div class="cont bottom">
       <table cellspaching="0" cellpadding="5">
+        {% set dawareins = 'nein' %}
         {% for item in inhalte %}
           {% if(item.variationBase.isActive==true) %}
 
@@ -68,6 +69,7 @@
 
 
             {% if mussraus == 'ja' %}
+              {% set dawareins = 'ja' %}
               <tr>
                 <td class="itemName">
                   <a href="#" class="icon-right-big"></a>
@@ -128,6 +130,8 @@
             {% endif %}
           {% endif %}
         {% endfor %}
+        {% if dawareins == 'nein' %}
+        <tr><td colspan="10" style="text-align:center;">Nix zu beanstanden</td></tr>
       </table>
     </div>
   {% else %}
