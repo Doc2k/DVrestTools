@@ -98,7 +98,7 @@
                 </td>
                 <td class="justIcon stockautoVisible">
                   {% if (item.variationBase.isVisibleIfNetStockIsPositive ==true) %}
-                    <span class="icon-ok{% if (itemNettoStock<1 %} error{% endif %}"></span>
+                    <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
                   {% else %}
                     <span class="nixDrin"></span>
                   {% endif %}
