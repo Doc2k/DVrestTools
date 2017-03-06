@@ -58,3 +58,4 @@ td, th{border:1px solid #333; padding:2px 5px; text-align:left;}
 td.itemName, th.itemName{width:60%;}
 td.justIcon, th.justIcon{text-align:center; width:5%;}
 td.id, th.id{text-align:center; width:10%;}
+td .icon-left-big{background:#ccc; border-radius:4px; padding:3px; text-decoration:none;}
