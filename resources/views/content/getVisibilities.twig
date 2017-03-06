@@ -55,11 +55,8 @@
 
             {% set itemNettoStock = item.variationStock.stockNet %}
             {% if
-              (
-                (itemNettoStock<1 and item.variationBase.stockLimitation > 0)
-                or
-                (itemNettoStock>0 and item.variationBase.stockLimitation = 0)
-              )
+                (itemNettoStock<1 and item.variationBase.stockLimitation > 0 or itemNettoStock>0 and item.variationBase.stockLimitation = 0)
+
             %}
               Lalabla
             {% endif %}
@@ -93,9 +90,9 @@
               </td>
               <td class="justIcon stockautoVisible">
                 {% if(item.variationBase.isVisibleIfNetStockIsPositive) ==true %}
-
+                  <span class="icon-ok"></span>
                 {% else %}
-
+                  <span class="nixDrin"></span>
                 {% endif %}
               </td>
               <td class="justIcon stockautoInvisible">
