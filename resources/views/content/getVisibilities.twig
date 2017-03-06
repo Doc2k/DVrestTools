@@ -33,16 +33,16 @@
               <span class="icon-lock"></span>
             </th>
             <th class="justIcon stockautoVisible">
-              A-<span class="icon-eye" style="color:green"></span>
+              A <span class="icon-eye" ></span>
             </th>
             <th class="justIcon stockautoInvisible">
-              A-<span class="icon-eye-off"></span>
+              A <span class="icon-eye-off"></span>
             </th>
             <th class="justIcon stockautoAvailable">
-              A-<span class="avail_1 icon-box"></span>
+              A <span class="avail_1 icon-box" style="color:green"></span>
             </th>
             <th class="justIcon stockautoUnavailable">
-              A-<span class="avail_1 icon-box"></span>
+              A <span class="avail_1 icon-box" style="color:red"></span>
             </th>
           </tr>
         </table>
@@ -104,13 +104,25 @@
                   {% endif %}
                 </td>
                 <td class="justIcon stockautoInvisible">
-
+                  {% if (item.variationBase.isInvisibleIfNetStockIsNotPositive ==true) %}
+                    <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
+                  {% else %}
+                    <span class="nixDrin"></span>
+                  {% endif %}
                 </td>
                 <td class="justIcon stockautoAvailable">
-
+                  {% if (item.variationBase.isAvailableIfNetStockIsPositive ==true) %}
+                    <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
+                  {% else %}
+                    <span class="nixDrin"></span>
+                  {% endif %}
                 </td>
                 <td class="justIcon stockautoUnavailable">
-
+                  {% if (item.variationBase.isUnavailableIfNetStockIsNotPositive ==true) %}
+                    <span class="icon-ok{% if (itemNettoStock<1) %} error{% endif %}"></span>
+                  {% else %}
+                    <span class="nixDrin"></span>
+                  {% endif %}
                 </td>
               </tr>
             {% endif %}
