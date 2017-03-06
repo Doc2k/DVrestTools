@@ -65,6 +65,8 @@
                 {% set mussraus = 'ja' %}
             {% elseif (itemNettoStock>0 and item.variationBase.isVisibleIfNetStockIsPositive !=true) %}
                 {% set mussraus = 'ja' %}
+            {% elseif (item.variationBase.isVisibleInClient!="ja") %}
+                {% set mussraus = 'ja' %}
             {% endif %}
 
 
