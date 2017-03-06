@@ -32,12 +32,16 @@ body{background:url(../images/dv_web2.png) no-repeat center 70px;width:100%;heig
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-eye-off:before { content: '\e800'; color:#666;}
-.icon-eye:before { content: '\e801'; color:#14496d;}
-.icon-lock:before { content: '\e802'; color:#14496d;}
-.icon-lock-open:before { content: '\e803'; color:#666;}
+.icon-eye-off:before { content: '\e800'; }
+.icon-eye:before { content: '\e801'; }
+.icon-lock:before { content: '\e802'; }
+.icon-lock-open:before { content: '\e803'; }
 .icon-ok:before { content: '\e804'; }
 .icon-box:before { content: '\e805'; }
+.icon-down-big:before { content: '\e806'; }
+.icon-left-big:before { content: '\e807'; }
+.icon-right-big:before { content: '\e808'; }
+.icon-up-big:before { content: '\e809'; }
 
 
 .clear{clear:both;}
@@ -51,4 +55,5 @@ tr{transition:all 300ms;}
 tr:nth-child(2n+0){background:rgba(8,80,128,0.1);}
 tr:hover{background:#ccc;}
 td, th{border:1px solid #333; padding:2px 5px; text-align:left;}
-td.justIcon{text-align:center;}
+td.itemName{width:30%;}
+td.justIcon{text-align:center; width:5%;}
