@@ -36,35 +36,37 @@
     <div class="cont bottom">
       <table cellspaching="0" cellpadding="5">
         {% for item in inhalte %}
-          <tr>
-            <td class="itemName">
-              <a href="#" class="icon-right-big"></a>
-              {{ item.itemDescription.name1 }} {{ item.variationBase.variationName }}
-            </td>
-            <td class="id">
-              {{ item.itemBase.id }}
-            </td>
-            <td class="id">
-              {{ item.variationBase.id }}
-            </td>
-            <td class="stock">
-              {{ item.variationStock.stockNet }}
-            </td>
-            <td class="justIcon visibility">
-              {% if(item.variationBase.isVisibleInClient=="ja") %}
-                <span class="icon-eye"></span>
-              {% else %}
-                <span class="icon-eye-off"></span>
-              {% endif %}
-            </td>
-            <td class="justIcon stockBinding">
-              {% if(item.variationBase.stockLimitation > 0) %}
-                <span class="icon-lock"></span>
-              {% else %}
-                <span class="icon-lock-open"></span>
-              {% endif %}
-            </td>
-          </tr>
+          {% if(item.variationBase.isActive==true) %}
+            <tr>
+              <td class="itemName">
+                <a href="#" class="icon-right-big"></a>
+                {{ item.itemDescription.name1 }} {{ item.variationBase.variationName }}
+              </td>
+              <td class="id">
+                {{ item.itemBase.id }}
+              </td>
+              <td class="id">
+                {{ item.variationBase.id }}
+              </td>
+              <td class="stock">
+                {{ item.variationStock.stockNet }}
+              </td>
+              <td class="justIcon visibility">
+                {% if(item.variationBase.isVisibleInClient=="ja") %}
+                  <span class="icon-eye"></span>
+                {% else %}
+                  <span class="icon-eye-off"></span>
+                {% endif %}
+              </td>
+              <td class="justIcon stockBinding">
+                {% if(item.variationBase.stockLimitation > 0) %}
+                  <span class="icon-lock"></span>
+                {% else %}
+                  <span class="icon-lock-open"></span>
+                {% endif %}
+              </td>
+            </tr>
+          {% endif %}
         {% endfor %}
       </table>
     </div>
