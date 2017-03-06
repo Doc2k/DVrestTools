@@ -54,10 +54,7 @@
           {% if(item.variationBase.isActive==true) %}
 
             {% set itemNettoStock = item.variationStock.stockNet %}
-            {% if
-                (itemNettoStock<1 and item.variationBase.stockLimitation > 0 or itemNettoStock>0 and item.variationBase.stockLimitation = 0)
-
-            %}
+            {% if itemNettoStock<1 and item.variationBase.stockLimitation ==true %}
               Lalabla
             {% endif %}
             <tr>
