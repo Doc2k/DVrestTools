@@ -86,7 +86,7 @@
 
           /* Fuer spaeteren vergleich (In diesem Shop sichtbar) */
           /* ---------------------------------------------------- */
-            $plentyId = $this->request->get('pId');
+            $plentyId = $this->request->get('pID');
           /* ---------------------------------------------------- */
 
           /* $ergebnisse wird spaeter an Twig uebergeben */
