@@ -54,6 +54,8 @@ table{border-collapse: collapse;width: 100%; font-size:13px; color: #14496d;}
 tr{transition:all 300ms;}
 tr:nth-child(2n+0){background:rgba(8,80,128,0.1);}
 tr:hover{background:#ccc;}
+tr.done, tr.done:hover{background:#b9b9b9; color:#666;}
+tr.done *{color:#666;}
 td, th{border:1px solid #333;padding:2px 5px;text-align:left;}
 th{overflow:hidden;height: 21px !important;}
 td.itemName, th.itemName{width: 50%;}
