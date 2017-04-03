@@ -166,12 +166,16 @@
                     $ergebnisse[$itemCount]['variationBase']['variationName'] = $Varergebnisse[0]['name'];
                     $ergebnisse[$itemCount]['variationBase']['variationAvail'] = $Varergebnisse[0]['availability'];
 
+
+
                     /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
                     /* ---------------------------------------------------- */
                       $istaktuellSichtbar='nein';
                       foreach($Varergebnisse[0]['variationClients'] as $client){
                         if((string)$client['plentyId']==$plentyId){
-                          $istaktuellSichtbar='ja';
+                          if($Varergebnisse[0]['automaticClientVisibility']>0){
+                            $istaktuellSichtbar='ja';
+                          }
                         }
                       }
 
