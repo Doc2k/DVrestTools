@@ -174,10 +174,8 @@
                     /* ---------------------------------------------------- */
                       $istaktuellSichtbar='nein';
                       foreach($Varergebnisse[0]['variationClients'] as $client){
-                        if((string)$client['plentyId']==$plentyId){
-                          if($Varergebnisse[0]['automaticClientVisibility']>0){
+                        if((string)$client['plentyId']==$plentyId || $Varergebnisse[0]['automaticClientVisibility']>0){
                             $istaktuellSichtbar='ja';
-                          }
                         }
                       }
 
