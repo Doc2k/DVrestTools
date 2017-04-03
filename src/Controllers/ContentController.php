@@ -109,7 +109,8 @@
 
             /* Filter auf ItemId fuer ersten Call (muss spaeter weg) */
             /* ---------------------------------------------------- */
-              $itemFilter = [];
+              // $itemFilter = [];
+              $itemFilter = ['itemBase.hasId' => ['itemId' => '19002']];
             /* ---------------------------------------------------- */
 
             /* Parameter fuer ersten Call (Einschraenkung auf Lager) */
@@ -165,6 +166,7 @@
                     $ergebnisse[$itemCount]['variationBase']['mainWarehouseId'] = $Varergebnisse[0]['mainWarehouseId'];
                     $ergebnisse[$itemCount]['variationBase']['variationName'] = $Varergebnisse[0]['name'];
                     $ergebnisse[$itemCount]['variationBase']['variationAvail'] = $Varergebnisse[0]['availability'];
+                    $ergebnisse[$itemCount]['variationBase']['autoVisible'] = $Varergebnisse[0]['automaticClientVisibility'];
 
 
 
