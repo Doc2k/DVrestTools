@@ -187,7 +187,7 @@
                       $this
                         ->getLogger("ContentController_show")
                         ->setReferenceType('VariationRepositoryContract')
-                        ->setReferenceValue($varID)
+                        ->setReferenceValue($varID.'_'.$itemCount)
                         ->info('DVrestTools::log.successMessage', $ergebnisse);
                     /* ---------------------------------------------------- */
 
