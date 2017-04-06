@@ -6,6 +6,8 @@
     use Plenty\Modules\Item\VariationStock\Contracts\VariationStockRepositoryContract;
     use Plenty\Modules\Item\DataLayer\Contracts\ItemDataLayerRepositoryContract;
     use Plenty\Modules\Item\Variation\Contracts\VariationRepositoryContract;
+    use Plenty\Modules\Item\VariationSalesPrice\Contracts\VariationSalesPriceRepositoryContract;
+    // use Plenty\Modules\Item\SalesPrice\Contracts\SalesPriceNameRepositoryContract;
     use Plenty\Plugin\Log\Loggable;
 
 
@@ -109,8 +111,8 @@
 
             /* Filter auf ItemId fuer ersten Call (muss spaeter weg) */
             /* ---------------------------------------------------- */
-              $itemFilter = [];
-              //$itemFilter = ['itemBase.hasId' => ['itemId' => '19002']];
+              //$itemFilter = [];
+              $itemFilter = ['itemBase.hasId' => ['itemId' => '19002']];
             /* ---------------------------------------------------- */
 
             /* Parameter fuer ersten Call (Einschraenkung auf Lager) */
@@ -207,4 +209,35 @@
       /* ############################################################################################################ */
       /* ENDE -> Get Visibilities */
 
+
+
+
+      /* Get SalesPrices */
+      /* ############################################################################################################ */
+        public function getPrices(Twig $twig, VariationSalesPriceRepositoryContract $pricerepo):string{
+          header('content-type: application/json; charset=utf-8');
+          header("access-control-allow-origin: *");
+
+          $augabespalten =[
+            'itemDescription' => ['name1'],
+            'variationBase' => ['id'],
+            'variationStock' => ['stockNet', 'stockPhysical', 'warehouseId']
+          ];
+          $itemFilter = ['itemBase.hasId' => ['itemId' => [$this->request->get('id')]]];
+          $itemParams = ['language' => 'de', 'type' => 'warehouseId', 'warehouseId' => $this->request->get('warehouse')];
+          $Ergebnis = $pricerepo->search($augabespalten, $itemFilter, $itemParams);
+          $ergebnisse = array();
+          foreach($Ergebnis as $item){
+            $ergebnisse[] = $item;
+          }
+
+          $myData= array(
+            'inhalte' => $ergebnisse,
+            'callb' => $this->request->get('callback')
+          );
+
+          return $twig->render('DVrestTools::content.getStockB', $myData);
+        }
+      /* ############################################################################################################ */
+      /* ENDE -> Get SalesPrices */
 }
