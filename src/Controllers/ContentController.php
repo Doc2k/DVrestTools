@@ -135,6 +135,8 @@
                 /* Werte aus erstem Call in $ergebnisse einfuegen */
                 /* ---------------------------------------------------- */
                   $ergebnisse[$itemCount]['itemBase']['id'] = $item['itemBase']['id'];
+                  $ergebnisse[$itemCount]['itemBase']['inactive'] = $item['itemBase']['inactive'];
+                  $ergebnisse[$itemCount]['itemBase']['free7'] = $item['itemBase']['free7'];
                   $ergebnisse[$itemCount]['itemDescription']['name1'] = $item['itemDescription']['name1'];
                   $ergebnisse[$itemCount]['variationBase']['id'] = $item['variationBase']['id'];
                   $ergebnisse[$itemCount]['variationBase']['variationName'] = $item['variationBase']['variationName'];
@@ -164,13 +166,12 @@
                     $ergebnisse[$itemCount]['variationBase']['isAvailableIfNetStockIsPositive'] = $Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
                     $ergebnisse[$itemCount]['variationBase']['isUnavailableIfNetStockIsNotPositive'] = $Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
                     $ergebnisse[$itemCount]['variationBase']['isActive'] = $Varergebnisse[0]['isActive'];
+
                     $ergebnisse[$itemCount]['variationBase']['stockLimitation'] = $Varergebnisse[0]['stockLimitation'];
                     $ergebnisse[$itemCount]['variationBase']['mainWarehouseId'] = $Varergebnisse[0]['mainWarehouseId'];
                     $ergebnisse[$itemCount]['variationBase']['variationName'] = $Varergebnisse[0]['name'];
                     $ergebnisse[$itemCount]['variationBase']['variationAvail'] = $Varergebnisse[0]['availability'];
                     $ergebnisse[$itemCount]['variationBase']['autoVisible'] = $Varergebnisse[0]['automaticClientVisibility'];
-
-
 
                     /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
                     /* ---------------------------------------------------- */
@@ -184,21 +185,21 @@
                       $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
                     /* ---------------------------------------------------- */
 
-                    /* $ergebnisse loggen (Datentausch -> Log) */
-                    /* ---------------------------------------------------- */
-                      $this
-                        ->getLogger("ContentController_show")
-                        ->setReferenceType('VariationRepositoryContract')
-                        ->setReferenceValue($varID.'_'.$itemCount)
-                        ->info('DVrestTools::log.successMessage', $ergebnisse);
-                    /* ---------------------------------------------------- */
-
                 /* ============================================================================ */
                 /* ENDE -> Werte aus 2tem Call in Vars uebernehmen*/
                 $itemCount++;
               }
             /* ============================================================================ */
             /* ENDE -> Ergebnis von erstem Call in Schleife durchlaufen */
+
+            /* $ergebnisse loggen (Datentausch -> Log) */
+            /* ---------------------------------------------------- */
+              $this
+                ->getLogger("ContentController_show")
+                ->setReferenceType('VariationRepositoryContract')
+                ->setReferenceValue($varID.'_'.$itemCount)
+                ->info('DVrestTools::log.successMessage', $ergebnisse);
+            /* ---------------------------------------------------- */
 
           /* ============================================================================ */
           /* ENDE -> Erster Call (DataLayerRepo) */
