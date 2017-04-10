@@ -103,6 +103,8 @@
             /* ---------------------------------------------------- */
               $augabespalten =[
                 'itemBase' => ['id'],
+                'itemBase' => ['inactive'],
+                'itemBase' => ['free7'],
                 'itemDescription' => ['name1'],
                 'variationBase' => ['id', 'variationName'],
                 'variationStock' => ['stockNet']
