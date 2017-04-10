@@ -102,7 +102,7 @@
             /* Spalten die beim ersten Call abgefragt werden */
             /* ---------------------------------------------------- */
               $augabespalten =[
-                'itemBase' => ['id', 'inactive', 'free7'],
+                'itemBase' => ['id', 'free7'],
                 'itemDescription' => ['name1'],
                 'variationBase' => ['id', 'variationName', 'active'],
                 'variationStock' => ['stockNet']
@@ -135,60 +135,64 @@
                 /* Werte aus erstem Call in $ergebnisse einfuegen */
                 /* ---------------------------------------------------- */
                   $ergebnisse[$itemCount]['itemBase']['id'] = $item['itemBase']['id'];
-                  $ergebnisse[$itemCount]['itemBase']['inactive'] = $item['itemBase']['inactive'];
                   $ergebnisse[$itemCount]['itemBase']['free7'] = $item['itemBase']['free7'];
                   $ergebnisse[$itemCount]['itemDescription']['name1'] = $item['itemDescription']['name1'];
                   $ergebnisse[$itemCount]['variationBase']['id'] = $item['variationBase']['id'];
                   $ergebnisse[$itemCount]['variationBase']['variationName'] = $item['variationBase']['variationName'];
-                  $ergebnisse[$itemCount]['variationBase']['activeFirst'] = $item['variationBase']['active'];
+                  $ergebnisse[$itemCount]['variationBase']['isActive'] = $item['variationBase']['active'];
                   $ergebnisse[$itemCount]['variationStock']['stockNet'] = $item['variationStock']['stockNet'];
                 /* ---------------------------------------------------- */
 
-                /* ---------------------------------------------------- */
-                /* ---------------------------------------------------- */
-                  $itemID= $item['itemBase']['id'];
-                  $varID= $item['variationBase']['id'];
-                /* ---------------------------------------------------- */
+                if(($item['itemBase']['free7']=="" || $item['itemBase']['free7']=="0") &&  $item['variationBase']['active']==="true"){
+                  /* ---------------------------------------------------- */
+                  /* ---------------------------------------------------- */
+                    $itemID= $item['itemBase']['id'];
+                    $varID= $item['variationBase']['id'];
+                  /* ---------------------------------------------------- */
 
-                /* Zweiten Call mit den sichtbaren Clients durchfuehren ($with) */
-                /* ---------------------------------------------------- */
-                  $with['variationClients'] = true;
-                  $VariationAbfrage = $VarRepo->show($varID, $with, "de");
-                /* ---------------------------------------------------- */
+                  /* Zweiten Call mit den sichtbaren Clients durchfuehren ($with) */
+                  /* ---------------------------------------------------- */
+                    $with['variationClients'] = true;
+                    $VariationAbfrage = $VarRepo->show($varID, $with, "de");
+                  /* ---------------------------------------------------- */
 
 
-                /* Werte aus 2tem Call in $ergebnisse uebernehmen */
-                /* ============================================================================ */
-                    $Varergebnisse = array();
-                    $Varergebnisse[] = $VariationAbfrage;
+                  /* Werte aus 2tem Call in $ergebnisse uebernehmen */
+                  /* ============================================================================ */
+                      $Varergebnisse = array();
+                      $Varergebnisse[] = $VariationAbfrage;
 
-                    $ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive'] = $Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isInvisibleIfNetStockIsNotPositive'] = $Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isAvailableIfNetStockIsPositive'] = $Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isUnavailableIfNetStockIsNotPositive'] = $Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
-                    $ergebnisse[$itemCount]['variationBase']['isActive'] = $Varergebnisse[0]['isActive'];
+                      $ergebnisse[$itemCount]['variationBase']['isVisibleIfNetStockIsPositive'] = $Varergebnisse[0]['isVisibleIfNetStockIsPositive'];
+                      $ergebnisse[$itemCount]['variationBase']['isInvisibleIfNetStockIsNotPositive'] = $Varergebnisse[0]['isInvisibleIfNetStockIsNotPositive'];
+                      $ergebnisse[$itemCount]['variationBase']['isAvailableIfNetStockIsPositive'] = $Varergebnisse[0]['isAvailableIfNetStockIsPositive'];
+                      $ergebnisse[$itemCount]['variationBase']['isUnavailableIfNetStockIsNotPositive'] = $Varergebnisse[0]['isUnavailableIfNetStockIsNotPositive'];
+                      $ergebnisse[$itemCount]['variationBase']['stockLimitation'] = $Varergebnisse[0]['stockLimitation'];
+                      $ergebnisse[$itemCount]['variationBase']['mainWarehouseId'] = $Varergebnisse[0]['mainWarehouseId'];
+                      $ergebnisse[$itemCount]['variationBase']['variationName'] = $Varergebnisse[0]['name'];
+                      $ergebnisse[$itemCount]['variationBase']['variationAvail'] = $Varergebnisse[0]['availability'];
+                      $ergebnisse[$itemCount]['variationBase']['autoVisible'] = $Varergebnisse[0]['automaticClientVisibility'];
 
-                    $ergebnisse[$itemCount]['variationBase']['stockLimitation'] = $Varergebnisse[0]['stockLimitation'];
-                    $ergebnisse[$itemCount]['variationBase']['mainWarehouseId'] = $Varergebnisse[0]['mainWarehouseId'];
-                    $ergebnisse[$itemCount]['variationBase']['variationName'] = $Varergebnisse[0]['name'];
-                    $ergebnisse[$itemCount]['variationBase']['variationAvail'] = $Varergebnisse[0]['availability'];
-                    $ergebnisse[$itemCount]['variationBase']['autoVisible'] = $Varergebnisse[0]['automaticClientVisibility'];
-
-                    /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
-                    /* ---------------------------------------------------- */
-                      $istaktuellSichtbar='nein';
-                      foreach($Varergebnisse[0]['variationClients'] as $client){
-                        if((string)$client['plentyId']==$plentyId){
-                            $istaktuellSichtbar='ja';
+                      /* Alle uebermittelten Clients auf gesuchte PlentyID pruefen */
+                      /* ---------------------------------------------------- */
+                        $istaktuellSichtbar='nein';
+                        foreach($Varergebnisse[0]['variationClients'] as $client){
+                          if((string)$client['plentyId']==$plentyId){
+                              $istaktuellSichtbar='ja';
+                          }
                         }
-                      }
 
-                      $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
-                    /* ---------------------------------------------------- */
+                        $ergebnisse[$itemCount]['variationBase']['isVisibleInClient'] = $istaktuellSichtbar;
+                      /* ---------------------------------------------------- */
+                  /* ============================================================================ */
+                  /* ENDE -> Werte aus 2tem Call in Vars uebernehmen*/
 
-                /* ============================================================================ */
-                /* ENDE -> Werte aus 2tem Call in Vars uebernehmen*/
+
+                }
                 $itemCount++;
+
+
+
+
               }
             /* ============================================================================ */
             /* ENDE -> Ergebnis von erstem Call in Schleife durchlaufen */
