@@ -143,7 +143,7 @@
                   $ergebnisse[$itemCount]['variationStock']['stockNet'] = $item['variationStock']['stockNet'];
                 /* ---------------------------------------------------- */
 
-                if(($item['itemBase']['free7']=="" || $item['itemBase']['free7']=="0") &&  $item['variationBase']['active']==="true"){
+                if(($item['itemBase']['free7']=="" || $item['itemBase']['free7']=="0") &&  ($item['variationBase']['active']==="true")){
                   /* ---------------------------------------------------- */
                   /* ---------------------------------------------------- */
                     $itemID= $item['itemBase']['id'];
