@@ -112,8 +112,8 @@
             /* Filter auf ItemId fuer ersten Call (muss spaeter weg) */
             /* ---------------------------------------------------- */
               // $itemFilter = [];
-              //$itemFilter = ['itemBase.hasId' => ['itemId' => '61010']];
-              $itemFilter = ['variationBase.isActive' => 'true'];
+              $itemFilter = ['itemBase.hasId' => ['itemId' => '61010']];
+              // $itemFilter = ['variationBase.isActive' => 'true'];
             /* ---------------------------------------------------- */
 
             /* Parameter fuer ersten Call (Einschraenkung auf Lager) */
