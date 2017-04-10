@@ -111,8 +111,8 @@
 
             /* Filter auf ItemId fuer ersten Call (muss spaeter weg) */
             /* ---------------------------------------------------- */
-              $itemFilter = [];
-              // $itemFilter = ['itemBase.hasId' => ['itemId' => '19002']];
+              // $itemFilter = [];
+              $itemFilter = ['itemBase.hasId' => ['itemId' => '61010']];
             /* ---------------------------------------------------- */
 
             /* Parameter fuer ersten Call (Einschraenkung auf Lager) */
