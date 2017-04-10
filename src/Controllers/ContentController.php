@@ -102,9 +102,7 @@
             /* Spalten die beim ersten Call abgefragt werden */
             /* ---------------------------------------------------- */
               $augabespalten =[
-                'itemBase' => ['id'],
-                'itemBase' => ['inactive'],
-                'itemBase' => ['free7'],
+                'itemBase' => ['id', 'inactive', 'free7']
                 'itemDescription' => ['name1'],
                 'variationBase' => ['id', 'variationName'],
                 'variationStock' => ['stockNet']
