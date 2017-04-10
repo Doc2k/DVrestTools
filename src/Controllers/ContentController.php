@@ -104,7 +104,7 @@
               $augabespalten =[
                 'itemBase' => ['id', 'inactive', 'free7'],
                 'itemDescription' => ['name1'],
-                'variationBase' => ['id', 'variationName'],
+                'variationBase' => ['id', 'variationName', 'active'],
                 'variationStock' => ['stockNet']
               ];
             /* ---------------------------------------------------- */
@@ -140,6 +140,7 @@
                   $ergebnisse[$itemCount]['itemDescription']['name1'] = $item['itemDescription']['name1'];
                   $ergebnisse[$itemCount]['variationBase']['id'] = $item['variationBase']['id'];
                   $ergebnisse[$itemCount]['variationBase']['variationName'] = $item['variationBase']['variationName'];
+                  $ergebnisse[$itemCount]['variationBase']['activeFirst'] = $item['variationBase']['active'];
                   $ergebnisse[$itemCount]['variationStock']['stockNet'] = $item['variationStock']['stockNet'];
                 /* ---------------------------------------------------- */
 
